@@ -1,0 +1,13 @@
+[Unit]
+Description=Start api synth related services
+After=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/askbayou
+ExecStart=/home/askbayou/start_ask_bayou.sh > /home/askbayou/start_ask_bayou.sh.log 2>&1 
+KillMode=none
+User=askbayou
+
+[Install]
+WantedBy=multi-user.target
