@@ -1,0 +1,6 @@
+src/main/dart/ask_bayou_com/packages/**
+src/main/dart/.packages
+src/main/dart/ask_bayou_com/.packages
+src/main/dart/ask_bayou_com/web/packages
+src/main/dart/ask_bayou_com/web/js/packages
+src/main/dart/ask_bayou_com/pubspec.lock

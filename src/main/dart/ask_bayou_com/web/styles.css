@@ -1,0 +1,132 @@
+/*
+Copyright 2016 Rice University
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+#editor-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: calc(95% - 1px); /* 1px is the border height in #header */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#editor-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: calc(95% - 1px); /* 1px is the border height in #header */
+    width: 50%;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+#header
+{
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 5%; /* 5% needs to match the height calc(95% - 1px) in #editor-left, #editor-right */
+    background-color: lightgray;
+
+    /* "optimized" ver. by WebStorm does not render correctly in Chrome */
+    /*noinspection CssOptimizeSimilarProperties*/
+    border-bottom-color: #838383;
+
+    /* "optimized" ver. by WebStorm does not render correctly in Chrome */
+    /*noinspection CssOptimizeSimilarProperties*/
+    border-width: 0 0 1px 0; /* 1px needs to match height calculation in #editor-left, #editor-right */
+
+    /* "optimized" ver. by WebStorm does not render correctly in Chrome */
+    /*noinspection CssOptimizeSimilarProperties*/
+    border-style: solid;
+
+    display:flex;            /* to center title */
+    align-items: center;     /* to center title */
+    justify-content: center; /* to center title */
+}
+
+#title
+{
+    font-size: 4vh;
+    cursor: default;
+}
+
+#search-spinner
+{
+    position: absolute;
+    left: 10px;
+    display: none;
+}
+
+#search-button
+{
+    position: absolute;
+    left: 20px;
+    display: none;
+    cursor: pointer;
+}
+
+#error-message
+{
+    position: absolute;
+    left: 20px;
+    display: none;
+}
+
+#results-selector
+{
+    display: none;
+    position: absolute;
+    right: 10px;
+}
+
+#result-left-button
+{
+    cursor: pointer;
+}
+
+#result-right-button
+{
+    cursor: pointer;
+}
+
+
+#source-select
+{
+    position: absolute;
+    right: 10px;
+}
