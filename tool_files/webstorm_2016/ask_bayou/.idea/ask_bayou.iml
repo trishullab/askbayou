@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com">
+      <excludeFolder url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com/web/ace-src-min/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com/web/ace-src-min/snippets/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com/web/font-awesome-4.7.0/css/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com/web/font-awesome-4.7.0/fonts/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com/web/font-awesome-4.7.0/less/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com/web/font-awesome-4.7.0/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com/web/font-awesome-4.7.0/scss/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com/web/img/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com/web/js/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../src/main/dart/ask_bayou_com/web/packages" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
+  </component>
+</module>
