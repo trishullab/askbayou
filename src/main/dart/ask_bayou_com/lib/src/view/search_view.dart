@@ -31,113 +31,124 @@ class SearchView
   {
     "TestBluetooth.java" :
     """
-import edu.rice.bayou.annotations.Evidence;
+import edu.rice.cs.caper.bayou.annotations.Evidence;
 import android.bluetooth.BluetoothAdapter;
 
 public class TestBluetooth {
 
-    @Evidence(apicalls = {"getInputStream"})
-    @Evidence(types = {"BluetoothSocket"})
-    void __bayou_fill(BluetoothAdapter adapter, String address) {
-
+    void readFromBluetooth(BluetoothAdapter adapter) {
+        String address = "00:43:A8:23:10:F0";
+        {
+            Evidence.apicalls("getInputStream");
+            Evidence.types("BluetoothSocket");
+        }
     }
 
 }
 """,
     "TestCamera.java":
 """
-import edu.rice.bayou.annotations.Evidence;
+import edu.rice.cs.caper.bayou.annotations.Evidence;
 
 public class TestCamera {
 
-    @Evidence(apicalls = {"startPreview"})
-    @Evidence(types = {"Camera"})
-    void __bayou_fill(int w, int h) {
-
+    void preview() {
+        int width = 640;
+        int height = 480;
+        {
+            Evidence.apicalls("startPreview");
+            Evidence.types("Camera");
+        }
     }
 
 }
 """,
     "TestDialog.java":
-    """
-import edu.rice.bayou.annotations.Evidence;
+"""
+import edu.rice.cs.caper.bayou.annotations.Evidence;
 import android.content.Context;
 
 public class TestDialog {
 
-    @Evidence(apicalls = {"setTitle", "setMessage"})
-    @Evidence(types = {"AlertDialog"})
-    void __bayou_fill(Context c, String str1, String str2) {
-
+    void createDialog(Context c) {
+        String str1 = "something here";
+        String str2 = "another thing here";
+        {
+            Evidence.apicalls("setTitle", "setMessage");
+            Evidence.types("AlertDialog");
+        }
     }
 
 }
 """,
     "TestIO1.java":
-    """
-import edu.rice.bayou.annotations.Evidence;
+"""
+import edu.rice.cs.caper.bayou.annotations.Evidence;
 
 public class TestIO1 {
 
-    @Evidence(apicalls = {"readLine", "ready"})
-    void __bayou_fill(String file) {
-
+    void read(String file) {
+        Evidence.apicalls("readLine");
     }
 
-}""",
+}
+""",
     "TestIO2.java":
-    """
-import edu.rice.bayou.annotations.Evidence;
-import java.io.InputStreamReader;
+"""
+import edu.rice.cs.caper.bayou.annotations.Evidence;
 
 public class TestIO2 {
 
-    @Evidence(types = {"BufferedReader"})
-    @Evidence(context = {"Reader"})
-    void __bayou_fill(InputStreamReader input) {
-
+    void read(String file) {
+        Evidence.apicalls("readLine");
+        Evidence.context("String");
     }
 
 }
 """,
     "TestIO_exception.java":
-    """
-import edu.rice.bayou.annotations.Evidence;
+"""
+import edu.rice.cs.caper.bayou.annotations.Evidence;
 
 public class TestIO_exception {
 
-    @Evidence(apicalls = {"readLine", "printStackTrace", "close"})
-    @Evidence(context = {"String"})
-    void __bayou_fill(String file) {
-
+    void readWithErrorHandling() {
+        String file;
+        {
+            Evidence.apicalls("readLine", "printStackTrace", "close");
+            Evidence.context("String");
+        }
     }
 
-}""",
+}
+""",
     "TestSpeech.java":
     """
-import edu.rice.bayou.annotations.Evidence;
+import edu.rice.cs.caper.bayou.annotations.Evidence;
 import android.content.Context;
 
 public class TestSpeech {
 
-    @Evidence(types = {"SpeechRecognizer"})
-    @Evidence(context = {"Context"})
-    void __bayou_fill(Context context) {
-
+    void speechRecognition(Context context) {
+        {
+            Evidence.types("SpeechRecognizer");
+            Evidence.context("Context");
+        }
     }
 
 }""",
     "TestWifi.java":
     """
-import edu.rice.bayou.annotations.Evidence;
+import edu.rice.cs.caper.bayou.annotations.Evidence;
 import android.net.wifi.WifiManager;
 
 public class TestWifi {
 
-    @Evidence(apicalls = {"startScan"})
-    @Evidence(types = {"WifiManager"})
-    void __bayou_fill(WifiManager manager) {
-
+    void scan(WifiManager manager) {
+        {
+            Evidence.apicalls("startScan");
+            Evidence.types("WifiManager");
+        }
     }
 
 }
