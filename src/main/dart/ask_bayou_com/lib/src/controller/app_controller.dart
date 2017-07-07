@@ -21,6 +21,14 @@ part of controller;
  */
 class AppController
 {
+  // TODO: doc
+  List<String> _currentlyShownResults;
+
+  Set<int> _currentlyShownResultsIndexFeedbackCollected = new Set();
+
+  // TODO: doc
+  String _lastCodeSentToModelForSynthesis;
+
   /**
    * A user interface for collecting search input and also indicating when a search is in progress.
    */
@@ -36,6 +44,9 @@ class AppController
    */
   final Synthesiser _synthesiser;
 
+  // TODO: doc
+  final ResultQualityFeedbackRepository _qualityRepo;
+
   /**
    * Indicates if start() has been called.
    */
@@ -43,8 +54,9 @@ class AppController
 
   /**
    * Creates a controller that uses the given Synthesiser to generate search results from user supplied search code.
+   * // TODO: doc
    */
-  AppController(this._synthesiser);
+  AppController(this._synthesiser, this._qualityRepo);
 
   /**
    * Shows the initial UI.  If an errorMessage is specified, will be shown to the user.  Calling start() more than once
@@ -66,6 +78,10 @@ class AppController
      */
     _resultsView.onReturnToSearchViewRequested.listen( (_) { _handleReturnToSearchViewRequested(); });
 
+    // TODO: doc
+    _resultsView.onResultLikedSignaled.listen((int resultIndex){ _handleResultLiked(resultIndex); });
+    _resultsView.onResultDislikedSignaled.listen((int resultIndex){ _handleResultDisliked(resultIndex); });
+
     _searchView.show();
 
     if(errorMessage != null)
@@ -81,6 +97,33 @@ class AppController
   {
     _resultsView.hide();
     _searchView.show();
+  }
+
+  // TODO: doc
+  void _handleResultLiked(int resultIndex)
+  {
+    _handleResultFeedbackHelp(resultIndex, true);
+  }
+
+  // TODO: doc
+  void _handleResultDisliked(int resultIndex)
+  {
+    _handleResultFeedbackHelp(resultIndex, false);
+  }
+
+  // TODO: doc
+  void _handleResultFeedbackHelp(int resultIndex, bool isGood)
+  {
+    if(_lastCodeSentToModelForSynthesis == null || _currentlyShownResults == null)
+      return; // bad state
+
+    if(resultIndex < 0 || resultIndex >= _currentlyShownResults.length)
+      return; // bad argument
+
+    String result = _currentlyShownResults[resultIndex];
+
+    _qualityRepo.addFeedback("3813b882-c84c-49cf-8d35-8b033c4aa908", _lastCodeSentToModelForSynthesis, result, isGood)
+        .then((_) { _currentlyShownResultsIndexFeedbackCollected.add(resultIndex);  });
   }
 
   /**
@@ -105,6 +148,8 @@ class AppController
     _searchView.hideSearchButton(); // we are doing a search now, so hide the search button until complete
     _searchView.showSpinner();      // we are doing a search now, so show the spinner until complete
 
+    _lastCodeSentToModelForSynthesis = program;
+
     _synthesiser.synthesise(program)
         .then(_handleResultsAvailable)
         .catchError(_handleSynthesiseError);
@@ -118,6 +163,7 @@ class AppController
     _searchView.hide(); // n.b. also hides the spinner started in _handleSearchRequested
     _resultsView.setViewModel(results);
     _resultsView.show(); // n.b. restores search button hidden in _handleSearchRequested
+    _currentlyShownResults = results;
 
   }
 

@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 library controller;
+import 'package:askbayoucom/model_result_quality_feedback.dart';
 import 'view.dart';
 import 'package:askbayoucom/model_api_synthesis.dart';
 

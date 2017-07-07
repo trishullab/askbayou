@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 import 'package:askbayoucom/controller.dart';
+import 'package:askbayoucom/model_result_quality_feedback.dart';
 import 'package:dart_config/default_browser.dart';
 import 'package:askbayoucom/model_api_synthesis.dart';
 
@@ -45,16 +46,34 @@ void main()
       }
     }
 
+    /**
+     * Todo: doc
+     */
+    String apiSynthesisFeedbackEndpoint;
+    {
+      String endpointKey = "apiSynthesisFeedbackEndpoint";
+      if(Uri.base.queryParameters != null && Uri.base.queryParameters.containsKey(endpointKey))
+      {
+        apiSynthesisFeedbackEndpoint = Uri.base.queryParameters[endpointKey];
+      }
+      else
+      {
+        apiSynthesisFeedbackEndpoint = config[endpointKey];
+      }
+    }
+
     /*
      * Start app.
      */
-    new AppController(new SynthesiserHttp(apiSynthesisEndpoint)).start();
+    new AppController(new SynthesiserHttp(apiSynthesisEndpoint),
+                          new ResultQualityFeedbackRepositoryHttp(apiSynthesisFeedbackEndpoint)).start();
   },
   onError: (error)
   {
     // config.yaml load failed
     print(error);
-    new AppController(new SynthesiserDoNothing()).start("Unable to load configuration file.  Please retry.");
+    new AppController(new SynthesiserDoNothing(), new ResultQualityFeedbackRepositoryDoNothing())
+        .start("Unable to load configuration file.  Please retry.");
   });
 
 }

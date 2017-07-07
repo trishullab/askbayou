@@ -130,3 +130,19 @@ html, body {
     position: absolute;
     right: 10px;
 }
+
+#like-button
+{
+    position: absolute;
+    right: 20px;
+    bottom: 30px;
+    display: none;
+}
+
+#dislike-button
+{
+    position: absolute;
+    right: 80px;
+    bottom: 30px;
+    display: none;
+}

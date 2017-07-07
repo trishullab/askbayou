@@ -25,6 +25,8 @@ class ResultsView
    */
   Iterable<String> _vm;
 
+  final Set<int> _feedbackCollectedIndexes = new Set();
+
   final HtmlElement _searchButton = querySelector("#search-button");
 
   final HtmlElement _resultPrevButton = querySelector("#result-left-button");
@@ -37,6 +39,9 @@ class ResultsView
 
   final HtmlElement _title = querySelector("#title");
 
+  final HtmlElement _likeResultButton = querySelector("#like-button");
+
+  final HtmlElement _dislikeResultButton = querySelector("#dislike-button");
 
   /**
    * An event fired to indicate the user has requested the results view to be closed a the search view restored.
@@ -68,6 +73,14 @@ class ResultsView
    */
   Stream<String> get onSearchRequested => _onSearchRequestedController.stream;
 
+  StreamController<int> _onResultLikedSignaledController = new StreamController(sync: true);
+
+  Stream<int> get onResultLikedSignaled => _onResultLikedSignaledController.stream;
+
+  StreamController<int> _onResultDislikedSignaledController = new StreamController(sync: true);
+
+  Stream<int> get onResultDislikedSignaled => _onResultDislikedSignaledController.stream;
+
   /**
    * The index of the currently shown result in _vm.  Null if there is no result to show.
    */
@@ -91,6 +104,8 @@ class ResultsView
     _resultNextButton.onClick.listen((_) { _handleShowNextResult();  });
     _searchButton.onClick.listen((_) { _handleSearchButtonClicked(); });
     _title.onClick.listen((_) { _handleTitleClicked(); } );
+    _likeResultButton.onClick.listen((_) { _handleLikeResultButtonClicked(); } );
+    _dislikeResultButton.onClick.listen((_) { _handleDislikeResultButtonClicked(); } );
   }
 
   /**
@@ -100,6 +115,29 @@ class ResultsView
   {
     if(_isShown) // needed because both views use the same title HTML and as such both will get the click event.
       _onReturnToSearchViewRequestedController.add(null);
+  }
+
+  // TODO: doc
+  void _handleLikeResultButtonClicked()
+  {
+    _handleResultButtonClickedHelp(_onResultLikedSignaledController);
+  }
+
+  // TODO: doc
+  void _handleDislikeResultButtonClicked()
+  {
+    _handleResultButtonClickedHelp(_onResultDislikedSignaledController);
+  }
+
+  // TODO: doc
+  void _handleResultButtonClickedHelp(StreamController<int> eventController)
+  {
+    if(!_isShown) // should only be visible to be clicked when isShown is true, but let's be paranoid.
+      return;
+
+    _feedbackCollectedIndexes.add(_resultIndex);
+    eventController.add(_resultIndex);
+    _showOrHideFeedbackButtons();
   }
 
   /**
@@ -127,6 +165,7 @@ class ResultsView
     _resultIndex = (_resultIndex - 1) % _vm.length;
     setEditorRightContent(_vm.toList()[_resultIndex]);
     _resultNumber.innerHtml = (_resultIndex + 1).toString();
+    _showOrHideFeedbackButtons();
   }
 
   /**
@@ -137,6 +176,7 @@ class ResultsView
     _resultIndex = (_resultIndex + 1) % _vm.length;
     setEditorRightContent(_vm.toList()[_resultIndex]);
     _resultNumber.innerHtml = (_resultIndex + 1).toString();
+    _showOrHideFeedbackButtons();
   }
 
   /**
@@ -154,7 +194,27 @@ class ResultsView
     if(_vm.toList().length >=2)
       _resultsSelector.style.display = "block";
 
+    _showOrHideFeedbackButtons();
+
     _isShown = true;
+  }
+
+  // todo: doc
+  void _showOrHideFeedbackButtons()
+  {
+    bool shouldBeShown = !_vm.isEmpty && !_feedbackCollectedIndexes.contains(_resultIndex);
+
+    if(shouldBeShown)
+    {
+      _likeResultButton.style.display = "block";
+      _dislikeResultButton.style.display = "block";
+    }
+    else
+    {
+      _likeResultButton.style.display = "none";
+      _dislikeResultButton.style.display = "none";
+    }
+
   }
 
   /**
@@ -166,6 +226,8 @@ class ResultsView
     _editorLeft.style.display = "none";
     _editorRight.style.display = "none";
     _resultsSelector.style.display = "none";
+    _likeResultButton.style.display = "none";
+    _dislikeResultButton.style.display = "none";
     _isShown = false;
   }
 
@@ -175,6 +237,8 @@ class ResultsView
   void setViewModel(Iterable<String> vm)
   {
     _vm = vm;
+    _feedbackCollectedIndexes.clear();
+    _showOrHideFeedbackButtons();
 
     if(_vm.isEmpty)
     {
