@@ -20,6 +20,6 @@ class ResultQualityFeedbackRepositoryDoNothing implements ResultQualityFeedbackR
   @override
   Future addFeedback(String requestId, String searchCode, String result, bool isGood)
   {
-    // do nothing
+    return new Completer().future; // never completes
   }
 }

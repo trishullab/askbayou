@@ -81,8 +81,15 @@ html, body {
 
 #title
 {
+    position: relative;
+    left: 20px;
     font-size: 4vh;
     cursor: default;
+}
+
+#learn
+{
+    font-size: 2vh;
 }
 
 #search-spinner

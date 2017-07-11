@@ -13,5 +13,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-apiSynthesisEndpoint: http://sisyphus.cs.rice.edu:8080/apisynthesis
-apiSynthesisFeedbackEndpoint: http://sisyphus.cs.rice.edu:8080/apisynthesisfeedback
+apiSynthesisEndpoint: http://baker-load-balancer-130039549.us-east-1.elb.amazonaws.com/apisynthesis
+apiSynthesisFeedbackEndpoint: http://baker-load-balancer-130039549.us-east-1.elb.amazonaws.com/apisynthesisfeedback
