@@ -13,5 +13,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-apiSynthesisEndpoint: http://sisyphus.cs.rice.edu:8080/apisynthesis
-apiSynthesisFeedbackEndpoint: http://sisyphus.cs.rice.edu:8080/apisynthesisfeedback
+apiSynthesisEndpoint: http://askbayou.com/apisynthesis
+apiSynthesisFeedbackEndpoint: http://askbayou.com/apisynthesisfeedback
