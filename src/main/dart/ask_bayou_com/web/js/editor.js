@@ -14,12 +14,12 @@
  limitations under the License.
  */
 var editorLeft = ace.edit("editor-left");
-editorLeft.setTheme("ace/theme/chrome");
+editorLeft.setTheme("ace/theme/github");
 editorLeft.getSession().setMode("ace/mode/java");
 editorLeft.setOption("showPrintMargin", false);
 
 var editorRight = ace.edit("editor-right");
-editorRight.setTheme("ace/theme/chrome");
+editorRight.setTheme("ace/theme/github");
 editorRight.getSession().setMode("ace/mode/java");
 editorRight.setOption("showPrintMargin", false);
 editorRight.setReadOnly(true);

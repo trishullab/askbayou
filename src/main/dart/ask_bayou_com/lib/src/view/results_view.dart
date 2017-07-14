@@ -37,7 +37,7 @@ class ResultsView
 
   final HtmlElement _editorRight = querySelector("#editor-right");
 
-  final HtmlElement _title = querySelector("#title");
+  final HtmlElement _logo = querySelector("#logo");
 
   final HtmlElement _likeResultButton = querySelector("#like-button");
 
@@ -103,7 +103,7 @@ class ResultsView
     _resultPrevButton.onClick.listen((_) { _handleShowPrevResult();  });
     _resultNextButton.onClick.listen((_) { _handleShowNextResult();  });
     _searchButton.onClick.listen((_) { _handleSearchButtonClicked(); });
-    _title.onClick.listen((_) { _handleTitleClicked(); } );
+    _logo.onClick.listen((_) { _handleTitleClicked(); } );
     _likeResultButton.onClick.listen((_) { _handleLikeResultButtonClicked(); } );
     _dislikeResultButton.onClick.listen((_) { _handleDislikeResultButtonClicked(); } );
   }
@@ -188,8 +188,8 @@ class ResultsView
     _searchButton.style.display = "block";
     _editorLeft.style.display = "block";
     _editorRight.style.display = "block";
-    _editorLeft.style.width = "50%";
-    _editorRight.style.width = "50%";
+    //_editorLeft.style.width = "50%";
+    //_editorRight.style.width = "50%";
 
     if(_vm.toList().length >=2)
       _resultsSelector.style.display = "block";
