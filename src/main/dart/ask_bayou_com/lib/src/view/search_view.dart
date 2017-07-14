@@ -23,13 +23,15 @@ class SearchView
 
   final HtmlElement _editorLeft = querySelector("#editor-left");
 
+  final HtmlElement _editorRight = querySelector("#editor-right");
+
   final HtmlElement _errorMessage = querySelector("#error-message");
 
   final SelectElement _sourceSelect = querySelector("#source-select");
 
   final Map<String,String> _filenameToContent =
   {
-    "TestBluetooth.java" :
+    "Bluetooth" :
     """
 import edu.rice.cs.caper.bayou.annotations.Evidence;
 import android.bluetooth.BluetoothAdapter;
@@ -46,7 +48,7 @@ public class TestBluetooth {
 
 }
 """,
-    "TestCamera.java":
+    "Camera":
 """
 import edu.rice.cs.caper.bayou.annotations.Evidence;
 
@@ -63,7 +65,7 @@ public class TestCamera {
 
 }
 """,
-    "TestDialog.java":
+    "Dialog":
 """
 import edu.rice.cs.caper.bayou.annotations.Evidence;
 import android.content.Context;
@@ -81,7 +83,7 @@ public class TestDialog {
 
 }
 """,
-    "TestIO1.java":
+    "IO1":
 """
 import edu.rice.cs.caper.bayou.annotations.Evidence;
 
@@ -93,7 +95,7 @@ public class TestIO1 {
 
 }
 """,
-    "TestIO2.java":
+    "IO2":
 """
 import edu.rice.cs.caper.bayou.annotations.Evidence;
 
@@ -106,7 +108,7 @@ public class TestIO2 {
 
 }
 """,
-    "TestIO_exception.java":
+    "IO_exception":
 """
 import edu.rice.cs.caper.bayou.annotations.Evidence;
 
@@ -122,7 +124,7 @@ public class TestIO_exception {
 
 }
 """,
-    "TestSpeech.java":
+    "Speech":
     """
 import edu.rice.cs.caper.bayou.annotations.Evidence;
 import android.content.Context;
@@ -137,7 +139,7 @@ public class TestSpeech {
     }
 
 }""",
-    "TestWifi.java":
+    "Wifi":
     """
 import edu.rice.cs.caper.bayou.annotations.Evidence;
 import android.net.wifi.WifiManager;
@@ -211,7 +213,8 @@ public class TestWifi {
   void show()
   {
     _editorLeft.style.display = "block";
-    _editorLeft.style.width = "100%";
+    _editorRight.style.display = "block";
+    //_editorLeft.style.width = "100%";
     _searchButton.style.display = 'block';
     _errorMessage.style.display = "inline";
     _sourceSelect.style.display = "block";

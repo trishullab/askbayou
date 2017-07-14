@@ -32,27 +32,19 @@ Copyright 2017 Rice University
     <script defer src="ace-src-min/ace.js" type="text/javascript" charset="utf-8"></script> <!-- for ACE editor -->
     <script defer src="js/editor.js" type="text/javascript" charset="utf-8"></script> <!-- setup editor-left,
                                                                                                  editor-right -->
+
 </head>
 
 <body>
 
 <div id="header">
-    <div id="title"><span>Bayou</span></div>
-    <i id="search-spinner" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i> <!-- searching indicator,
-                                                                                             initially hidden. -->
-    <i id="search-button"  class="fa fa-search fa-2x" aria-hidden="true"></i>
+    <img src="img/bayou-logo-v2.png" align="left" width="255" height="85" id="logo">
+    <label id="tagline">Synthesizer for API-based Java Programs</label>
+    <label id="about" onmouseover="this.style.backgroundColor='#27588b';" onmouseleave="this.style.backgroundColor='#5791CF';">
+        &nbsp&nbsp&nbspAbout&nbsp&nbsp&nbsp</label>
+
     <span id="error-message" class="no-select"></span>
 
-    <select id="source-select">
-        <option>TestBluetooth.java</option>
-        <option>TestCamera.java</option>
-        <option>TestDialog.java</option>
-        <option>TestIO1.java</option>
-        <option>TestIO2.java</option>
-        <option>TestIO_exception.java</option>
-        <option>TestSpeech.java</option>
-        <option>TestWifi.java</option>
-    </select>
 
     <div id="results-selector" class="no-select"> <!-- navigates results, initially hidden -->
         <i id="result-left-button" class="fa fa-arrow-left" aria-hidden="true"></i>
@@ -62,10 +54,29 @@ Copyright 2017 Rice University
 
 </div>
 
+<div id="editor-left-header">
+    <label id="heading">Enter Your Code Here</label>
+    <select id="source-select">
+        <option>Bluetooth</option>
+        <option>Camera</option>
+        <option>Dialog</option>
+        <option>IO1</option>
+        <option>IO2</option>
+        <option>IO_exception</option>
+        <option>Speech</option>
+        <option>Wifi</option>
+    </select>
+    <i id="search-spinner" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i> <!-- searching indicator,
+                                                                                             initially hidden. -->
+    <i id="search-button"  class="fa fa-search fa-2x" aria-hidden="true"></i>
+</div>
+
 <div id="editor-left"> <!-- ACE editor for taking user search input -->
 
 </div>
 
+<div id="editor-right-header">
+</div>
 <div id="editor-right">
 </div> <!-- ACE editor for showing current search result. Initially hidden. -->
 <i id="like-button" class="fa fa-thumbs-up fa-3x" aria-hidden="true"></i>
