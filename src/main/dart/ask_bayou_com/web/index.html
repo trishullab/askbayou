@@ -38,24 +38,23 @@ Copyright 2017 Rice University
 <body>
 
 <div id="header">
-    <img src="img/bayou-logo-v2.png" align="left" width="255" height="85" id="logo"><span id="learn">(<a href="http://info.askbayou.com" target="_blank">learn</a>)</span>
+    <img src="img/bayou-logo-v2.png" align="left" width="255" height="85" id="logo">
     <label id="tagline">Synthesizer for API-based Java Programs</label>
-    <label id="about" onmouseover="this.style.backgroundColor='#27588b';" onmouseleave="this.style.backgroundColor='#5791CF';">
-        &nbsp&nbsp&nbspAbout&nbsp&nbsp&nbsp</label>
+    <label id="about" onmouseover="this.style.backgroundColor='#27588b';" onmouseleave="this.style.backgroundColor='#5791CF';"
+            onmousedown="window.location.href = 'https://programsynthesis.org';">
+        &nbsp&nbsp&nbsp About &nbsp&nbsp&nbsp</label>
+    <label id="learn" onmouseover="this.style.backgroundColor='#27588b';" onmouseleave="this.style.backgroundColor='#5791CF';"
+            onmousedown="window.location.href = 'http://info.askbayou.com';">
+        &nbsp&nbsp&nbsp Learn &nbsp&nbsp&nbsp</label>
 
-    <span id="error-message" class="no-select"></span>
 
 
-    <div id="results-selector" class="no-select"> <!-- navigates results, initially hidden -->
-        <i id="result-left-button" class="fa fa-arrow-left" aria-hidden="true"></i>
-        <span class="no-select" id="result-number"></span>
-        <i id="result-right-button" class="fa fa-arrow-right" aria-hidden="true"></i>
-    </div>
+
 
 </div>
 
 <div id="editor-left-header">
-    <label id="heading">Enter Your Code Here</label>
+    <label id="heading-left">Enter Your Code Here</label>
     <select id="source-select">
         <option>Bluetooth</option>
         <option>Camera</option>
@@ -76,12 +75,26 @@ Copyright 2017 Rice University
 </div>
 
 <div id="editor-right-header">
+    <label id="heading-right">Results</label>
+    <div id="results-selector" class="no-select"> <!-- navigates results, initially hidden -->
+        <i id="result-left-button" class="fa fa-arrow-left" aria-hidden="true"></i>
+        &nbsp;<span class="no-select" id="result-number"></span>&nbsp;&nbsp;
+        <i id="result-right-button" class="fa fa-arrow-right" aria-hidden="true"></i>
+    </div>
+
+    <span id="error-message" class="no-select"></span>
+
 </div>
 <div id="editor-right">
 </div> <!-- ACE editor for showing current search result. Initially hidden. -->
 <i id="like-button" class="fa fa-thumbs-up fa-3x" aria-hidden="true"></i>
 <i id="dislike-button" class="fa fa-thumbs-down fa-3x" aria-hidden="true"></i>
 
+<div id="footer">
+    <label id="credits">
+        Developed at the <a href="http://www.cs.rice.edu/" style="text-decoration: none";>Department of Computer Science, Rice University</a>, as part of the DARPA-funded Pliny project.
+    </label>
+</div>
 
 </body>
 </html>
