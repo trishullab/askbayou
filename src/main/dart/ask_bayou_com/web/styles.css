@@ -126,6 +126,7 @@ html, body {
     top: 5px;
     right: 2%;
     display: none;
+    color: white;
 }
 
 #logo
@@ -197,6 +198,7 @@ html, body {
     right: 2%;
     display: none;
     cursor: pointer;
+    color: white;
 }
 
 #error-message
@@ -217,16 +219,19 @@ html, body {
     top: 10px;
     right: 2% ;
     font-size: large;
+
 }
 
 #result-left-button
 {
     cursor: pointer;
+    color: white;
 }
 
 #result-right-button
 {
     cursor: pointer;
+    color: white;
 }
 
 #result-number
