@@ -25,7 +25,7 @@ class ResultsView
    */
   Iterable<String> _vm;
 
-  final Set<int> _feedbackCollectedIndexes = new Set();
+  final Map<int,bool> _resultIndexToFeedback = new Map();
 
   final HtmlElement _searchButton = querySelector("#search-button");
 
@@ -120,24 +120,27 @@ class ResultsView
   // TODO: doc
   void _handleLikeResultButtonClicked()
   {
-    _handleResultButtonClickedHelp(_onResultLikedSignaledController);
+    _handleLikeResultButtonClickedHelp(_onResultLikedSignaledController, true);
   }
 
   // TODO: doc
   void _handleDislikeResultButtonClicked()
   {
-    _handleResultButtonClickedHelp(_onResultDislikedSignaledController);
+    _handleLikeResultButtonClickedHelp(_onResultDislikedSignaledController, false);
   }
 
   // TODO: doc
-  void _handleResultButtonClickedHelp(StreamController<int> eventController)
+  void _handleLikeResultButtonClickedHelp(StreamController<int> eventController, bool liked)
   {
     if(!_isShown) // should only be visible to be clicked when isShown is true, but let's be paranoid.
       return;
 
-    _feedbackCollectedIndexes.add(_resultIndex);
+    if(_resultIndexToFeedback.containsKey(_resultIndex)) // already voted on this result, ignore user
+      return;
+
+    _resultIndexToFeedback[_resultIndex] = liked;
     eventController.add(_resultIndex);
-    _showOrHideFeedbackButtons();
+    _renderFeedbackButtons();
   }
 
   /**
@@ -165,7 +168,7 @@ class ResultsView
     _resultIndex = (_resultIndex - 1) % _vm.length;
     setEditorRightContent(_vm.toList()[_resultIndex]);
     _resultNumber.innerHtml = (_resultIndex + 1).toString();
-    _showOrHideFeedbackButtons();
+    _renderFeedbackButtons();
   }
 
   /**
@@ -176,7 +179,7 @@ class ResultsView
     _resultIndex = (_resultIndex + 1) % _vm.length;
     setEditorRightContent(_vm.toList()[_resultIndex]);
     _resultNumber.innerHtml = (_resultIndex + 1).toString();
-    _showOrHideFeedbackButtons();
+    _renderFeedbackButtons();
   }
 
   /**
@@ -194,27 +197,47 @@ class ResultsView
     if(_vm.toList().length >=2)
       _resultsSelector.style.display = "block";
 
-    _showOrHideFeedbackButtons();
+    _renderFeedbackButtons();
 
     _isShown = true;
   }
 
   // todo: doc
-  void _showOrHideFeedbackButtons()
+  void _renderFeedbackButtons()
   {
-    bool shouldBeShown = !_vm.isEmpty && !_feedbackCollectedIndexes.contains(_resultIndex);
-
-    if(shouldBeShown)
-    {
-      _likeResultButton.style.display = "block";
-      _dislikeResultButton.style.display = "block";
-    }
-    else
+    if(_vm.isEmpty)
     {
       _likeResultButton.style.display = "none";
       _dislikeResultButton.style.display = "none";
+      return;
     }
 
+    _likeResultButton.style.display = "block";
+    _dislikeResultButton.style.display = "block";
+
+    /*
+     * Decide and set what color the like and dislike buttons should be.
+     */
+    String likeButtonColor, dislikeButtonColor;
+    if(!_resultIndexToFeedback.containsKey(_resultIndex))
+    {
+      likeButtonColor = "white";
+      dislikeButtonColor = "white";
+    }
+    else if(_resultIndexToFeedback[_resultIndex]) // user likes the result
+    {
+      likeButtonColor = "green";
+      dislikeButtonColor = "white";
+    }
+    else // user does not like the result
+    {
+      likeButtonColor = "white";
+      dislikeButtonColor = "red";
+    }
+
+    _likeResultButton.style.color = likeButtonColor;
+    _dislikeResultButton.style.color = dislikeButtonColor;
+    
   }
 
   /**
@@ -237,8 +260,8 @@ class ResultsView
   void setViewModel(Iterable<String> vm)
   {
     _vm = vm;
-    _feedbackCollectedIndexes.clear();
-    _showOrHideFeedbackButtons();
+    _resultIndexToFeedback.clear();
+    _renderFeedbackButtons();
 
     if(_vm.isEmpty)
     {

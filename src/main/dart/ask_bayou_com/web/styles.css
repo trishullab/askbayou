@@ -251,22 +251,25 @@ html, body {
     box-shadow: #5791CF;
 }
 
+#like-selector
+{
+    top: 5px;
+    position: absolute;
+    right: 80px;
+}
+
 #like-button
 {
-    position: absolute;
-    right: 40px;
-    bottom: 95px;
     display: none;
     cursor: pointer;
+    color: white;
 }
 
 #dislike-button
 {
-    position: absolute;
-    right: 100px;
-    bottom: 95px;
     display: none;
     cursor: pointer;
+    color: white;
 }
 
 #footer
