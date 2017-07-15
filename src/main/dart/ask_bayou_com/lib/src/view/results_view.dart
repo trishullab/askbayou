@@ -114,7 +114,10 @@ class ResultsView
   void _handleTitleClicked()
   {
     if(_isShown) // needed because both views use the same title HTML and as such both will get the click event.
+    {
+      setEditorRightContent("");
       _onReturnToSearchViewRequestedController.add(null);
+    }
   }
 
   // TODO: doc
@@ -237,7 +240,7 @@ class ResultsView
 
     _likeResultButton.style.color = likeButtonColor;
     _dislikeResultButton.style.color = dislikeButtonColor;
-    
+
   }
 
   /**
