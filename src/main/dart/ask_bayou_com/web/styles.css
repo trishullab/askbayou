@@ -79,6 +79,25 @@ html, body {
     background-color: #5791CF;
 }
 
+#info-box
+{
+    position: absolute;
+    padding: 10px 10px 60px;
+    top: 25%;
+    left: 57%;
+    right: 6%;
+    margin: 0;
+    background-color: lightgray;
+    z-index: 100;
+}
+
+#info-box-header
+{
+    background-color: darkgray;
+    text-align: center;
+    padding: 4px;
+}
+
 #header
 {
     position: absolute;
@@ -180,6 +199,8 @@ html, body {
     font-size: large;
     color: white;
 }
+
+
 
 #heading-right
 {
