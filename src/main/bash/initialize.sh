@@ -15,7 +15,7 @@
 # limitations under the License.
 
 apt-get update
-apt-get install unzip, nfs-common
+apt-get install unzip nfs-common
 
 adduser --gecos '' --disabled-password askbayou
 
