@@ -38,13 +38,15 @@ import android.bluetooth.BluetoothAdapter;
 
 public class TestBluetooth {
 
+    /* Get an input stream that can be used to read from
+     * the given blueooth hardware address */
     void readFromBluetooth(BluetoothAdapter adapter) {
         String address = "00:43:A8:23:10:F0";
         {
             Evidence.apicalls("getInputStream");
             Evidence.types("BluetoothSocket");
         }
-    }
+    }   
 
 }
 """,
@@ -54,14 +56,16 @@ import edu.rice.cs.caper.bayou.annotations.Evidence;
 
 public class TestCamera {
 
+    /* Start a preview of the camera, by setting the
+     * preview's width and height using the given ints */
     void preview() {
         int width = 640;
         int height = 480;
         {
             Evidence.apicalls("startPreview");
-            Evidence.types("Camera");
+            Evidence.context("int");
         }
-    }
+    }   
 
 }
 """,
@@ -72,6 +76,8 @@ import android.content.Context;
 
 public class TestDialog {
 
+    /* Create an alert dialog with the given strings
+     * as content (title and message) in the dialog */
     void createDialog(Context c) {
         String str1 = "something here";
         String str2 = "another thing here";
@@ -79,7 +85,7 @@ public class TestDialog {
             Evidence.apicalls("setTitle", "setMessage");
             Evidence.types("AlertDialog");
         }
-    }
+    }   
 
 }
 """,
@@ -89,11 +95,12 @@ import edu.rice.cs.caper.bayou.annotations.Evidence;
 
 public class TestIO1 {
 
+    // Read from a file
     void read(String file) {
         Evidence.apicalls("readLine");
-    }
-
+    }   
 }
+
 """,
     "IO2":
 """
@@ -101,44 +108,51 @@ import edu.rice.cs.caper.bayou.annotations.Evidence;
 
 public class TestIO2 {
 
+    // Read from a file, more specifically using the
+    // string argument given
     void read(String file) {
         Evidence.apicalls("readLine");
         Evidence.context("String");
-    }
-
+    }   
 }
+
 """,
     "IO_exception":
 """
 import edu.rice.cs.caper.bayou.annotations.Evidence;
 
-public class TestIO_exception {
+public class TestIOException {
 
+    // Read from the file, performing exception handling
+    // properly by printing the stack trace
     void readWithErrorHandling() {
         String file;
         {
             Evidence.apicalls("readLine", "printStackTrace", "close");
             Evidence.context("String");
         }
-    }
-
+    }   
 }
 """,
     "Speech":
     """
 import edu.rice.cs.caper.bayou.annotations.Evidence;
 import android.content.Context;
+import android.content.Intent;
+import android.speech.RecognitionListener;
 
 public class TestSpeech {
 
-    void speechRecognition(Context context) {
+    /* Construct a speech regonizer with the provided listener */
+    void speechRecognition(Context context, Intent intent, RecognitionListener listener) {
         {
             Evidence.types("SpeechRecognizer");
             Evidence.context("Context");
         }
-    }
+    }   
 
-}""",
+}
+""",
     "Wifi":
     """
 import edu.rice.cs.caper.bayou.annotations.Evidence;
@@ -146,12 +160,13 @@ import android.net.wifi.WifiManager;
 
 public class TestWifi {
 
+    /* Start a wi-fi scan using the given manager */
     void scan(WifiManager manager) {
         {
             Evidence.apicalls("startScan");
             Evidence.types("WifiManager");
         }
-    }
+    }   
 
 }
 """
