@@ -251,7 +251,7 @@ html, body {
 {
     position: absolute;
     top: 5px;
-    right: 2%;
+    right: 15px;
     display: none;
     cursor: pointer;
     color: white;
@@ -302,7 +302,7 @@ html, body {
 {
     position: absolute;
     top: 10px;
-    right: 10%;
+    right: 60px;
     font-family: Tahoma, Times, sans-serif;
     box-shadow: #5791CF;
 }
