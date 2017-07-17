@@ -33,10 +33,11 @@ html, body {
 
 #editor-left {
     position: absolute;
-    top: 20%;
-    bottom: 10%;
-    left: 3%;
-    right: 51%;
+    top: 150px;
+    left: 25px;
+    width: 45%;
+    height: auto;
+    bottom: 70px;
     padding: 0;
     margin: 0;
     border-width: medium;
@@ -46,21 +47,25 @@ html, body {
 
 #editor-left-header {
     position: absolute;
-    top: 15%;
-    bottom: 80%;
-    left: 3%;
-    right: 51%;
+    top: 100px;
+    left: 25px;
+    width: 45%;
+    height: 50px;
     padding: 0;
     margin: 0;
     background-color: #5791CF;
+    border-width: medium;
+    border-style: solid;
+    border-color: #5791CF;
 }
 
 #editor-right {
     position: absolute;
-    top: 20%;
-    bottom: 10%;
-    left: 51%;
-    right: 3%;
+    top: 150px;
+    right: 25px;
+    width: 45%;
+    height: auto;
+    bottom: 70px;
     padding: 0;
     margin: 0;
     display: none;
@@ -71,25 +76,31 @@ html, body {
 
 #editor-right-header {
     position: absolute;
-    top: 15%;
-    bottom: 80%;
-    left: 51%;
-    right: 3%;
+    top: 100px;
+    right: 25px;
+    width: 45%;
+    height: 50px;
     padding: 0;
     margin: 0;
     background-color: #5791CF;
+    border-width: medium;
+    border-style: solid;
+    border-color: #5791CF;
 }
 
 #info-box
 {
     position: absolute;
     padding: 10px 10px 60px;
-    top: 25%;
-    left: 57%;
-    right: 6%;
+    top: 175px;
+    right: 30px;
+    width: 38%;
+    height: auto;
+    bottom: 80px;
     margin: 0;
     background-color: lightgray;
     z-index: 100;
+    overflow: scroll;
 }
 
 #info-box-header
@@ -107,7 +118,7 @@ html, body {
     left: 0;
     right: 0;
     top: 0;
-    height: 10%; /* 5% needs to match the height calc(95% - 1px) in #editor-left, #editor-right */
+    height: 75px;
     background-color: #5791CF;
 
     /* "optimized" ver. by WebStorm does not render correctly in Chrome */
@@ -171,16 +182,20 @@ html, body {
 #logo
 {
     position: absolute;
-    left: 3%;
+    left: 25px;
+    top: 0;
+    height: 101%;
+    width: auto;
     cursor: pointer;
 }
 
 #tagline
 {
     position: absolute;
-    left: 25%;
+    top: 25px;
+    left: 275px;
     font-family: Tahoma, Times, sans-serif;
-    font-size: x-large;
+    font-size: large;
     color: white;
 }
 
@@ -318,8 +333,8 @@ html, body {
     position: absolute;
     font-family:  Tahoma, Times, sans-serif;
     font-size:small;
-    left: 3%;
-    right: 3%;
-    bottom: 4%;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
     color: #838383;
 }
