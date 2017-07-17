@@ -41,11 +41,9 @@ Copyright 2017 Rice University
     <img src="img/bayou-logo-v2.png" align="left" width="255" height="85" id="logo">
     <label id="tagline">Program synthesis powered by Bayesian machine learning</label>
     <label id="about" onmouseover="this.style.backgroundColor='#27588b';" onmouseleave="this.style.backgroundColor='#5791CF';"
-            onmousedown="window.location.href = 'https://programsynthesis.org';">
-        &nbsp&nbsp&nbsp About &nbsp&nbsp&nbsp</label>
-    <label id="learn" onmouseover="this.style.backgroundColor='#27588b';" onmouseleave="this.style.backgroundColor='#5791CF';"
             onmousedown="window.location.href = 'http://info.askbayou.com';">
-        &nbsp&nbsp&nbsp Learn &nbsp&nbsp&nbsp</label>
+        &nbsp&nbsp&nbsp About &nbsp&nbsp&nbsp</label>
+
 
 </div>
 
@@ -63,7 +61,7 @@ Copyright 2017 Rice University
     </select>
     <i id="search-spinner" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i> <!-- searching indicator,
                                                                                              initially hidden. -->
-    <i id="search-button"  class="fa fa-search fa-2x" aria-hidden="true"></i>
+    <i id="search-button"  class="fa fa-search fa-2x tooltip" aria-hidden="true"><span class="tooltiptext">Synthesize code</span></i>
 </div>
 
 <div id="editor-left"> <!-- ACE editor for taking user search input -->
