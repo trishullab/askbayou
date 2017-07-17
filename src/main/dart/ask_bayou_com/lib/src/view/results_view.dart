@@ -215,8 +215,8 @@ class ResultsView
       return;
     }
 
-    _likeResultButton.style.display = "block";
-    _dislikeResultButton.style.display = "block";
+    _likeResultButton.style.display = "inline";
+    _dislikeResultButton.style.display = "inline";
 
     /*
      * Decide and set what color the like and dislike buttons should be.

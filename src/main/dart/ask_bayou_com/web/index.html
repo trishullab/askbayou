@@ -40,8 +40,9 @@ Copyright 2017 Rice University
 <div id="header">
     <img src="img/bayou-logo-v2.png" align="left" width="255" height="85" id="logo">
     <label id="tagline">Program synthesis powered by Bayesian machine learning</label>
-    <label id="about" onmouseover="this.style.backgroundColor='#27588b';" onmouseleave="this.style.backgroundColor='#5791CF';"
-            onmousedown="window.location.href = 'http://info.askbayou.com';">
+    <label id="about" onmouseover="this.style.backgroundColor='#27588b';"
+                      onmouseleave="this.style.backgroundColor='#5791CF';"
+                      onmousedown="window.location.href = 'http://info.askbayou.com';">
         &nbsp&nbsp&nbsp About &nbsp&nbsp&nbsp</label>
 
 
@@ -61,7 +62,9 @@ Copyright 2017 Rice University
     </select>
     <i id="search-spinner" class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i> <!-- searching indicator,
                                                                                              initially hidden. -->
-    <i id="search-button"  class="fa fa-search fa-2x tooltip" aria-hidden="true"><span class="tooltiptext">Synthesize code</span></i>
+    <i id="search-button"  class="fa fa-search fa-2x tooltip" aria-hidden="true">
+        <span class="tooltiptext">Synthesize code</span>
+    </i>
 </div>
 
 <div id="editor-left"> <!-- ACE editor for taking user search input -->
@@ -73,19 +76,30 @@ Copyright 2017 Rice University
         <ul>
             <li>Bayou is a system for automatic synthesis of Java programs.</li>
             <br/>
-            <li> Bayou's mission is to read a programmer's mind. You invoke Bayou with some "evidence" about what you want a method or block to do, for example a few of the API methods and data types that this code should use. Bayou uses this evidence to make "guesses" about the code that you have in mind.</li>
+            <li>
+                Bayou's mission is to read a programmer's mind. You invoke Bayou with some "evidence" about what you
+                want a method or block to do, for example a few of the API methods and data types that this code should
+                use. Bayou uses this evidence to make "guesses" about the code that you have in mind.
+            </li>
             <br/>
-            <li>Bayou currently targets API-heavy Android code. Future versions will target other categories of programs.</li>
+            <li>
+                Bayou currently targets API-heavy Android code. Future versions will target other categories of
+                programs.
+            </li>
             <br/>
-            <li>Bayou is based on  <a href="https://arxiv.org/abs/1703.05698">Bayesian sketch learning</a>, a new method for program synthesis that brings together ideas from deep learning and programming language theory.</li>
+            <li>
+                Bayou is based on  <a href="https://arxiv.org/abs/1703.05698">Bayesian sketch learning</a>, a new
+                method for program synthesis that brings together ideas from deep learning and programming language
+                theory.
+            </li>
         </ul>
     </div>
 
 <div id="editor-right-header">
     <label id="heading-right">Results</label>
     <span id="like-selector">
-        <i id="like-button" class="fa fa-thumbs-up" aria-hidden="true"></i>
-        <i id="dislike-button" class="fa fa-thumbs-down" aria-hidden="true"></i>
+        <i id="like-button" class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i>
+        <i id="dislike-button" class="fa fa-thumbs-down fa-2x" aria-hidden="true"></i>
     </span>
     <div id="results-selector" class="no-select"> <!-- navigates results, initially hidden -->
         <i id="result-left-button" class="fa fa-arrow-left" aria-hidden="true"></i>
@@ -102,7 +116,9 @@ Copyright 2017 Rice University
 
 <div id="footer">
     <label id="credits">
-        Developed at the <a href="http://www.cs.rice.edu/" style="text-decoration: none";>Department of Computer Science, Rice University</a>. This research was partially supported by DARPA MUSE award #FA8750-14-2-0270.
+        Developed at the
+        <a href="http://www.cs.rice.edu/" style="text-decoration: none";>Department of Computer Science, Rice University</a>. This
+        research was partially supported by DARPA MUSE award #FA8750-14-2-0270.
     </label>
 </div>
 
