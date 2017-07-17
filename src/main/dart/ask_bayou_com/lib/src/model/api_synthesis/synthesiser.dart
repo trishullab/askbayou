@@ -45,5 +45,14 @@ abstract class Synthesiser
   /**
    * Performs synthesises on the given code producing code results.
    */
-  Future<List<String>> synthesise(String code);
+  Future<SynthesiseResult> synthesise(String code);
+}
+
+class SynthesiseResult
+{
+  final List<String> results;
+
+  final String requestId;
+
+  SynthesiseResult(this.results, this.requestId);
 }

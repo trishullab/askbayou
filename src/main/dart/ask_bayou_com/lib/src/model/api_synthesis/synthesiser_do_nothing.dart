@@ -22,7 +22,7 @@ part of model.api_synthesis;
 class SynthesiserDoNothing extends Synthesiser
 {
   @override
-  Future<List<String>> synthesise(String code)
+  Future<SynthesiseResult> synthesise(String code)
   {
     return new Completer().future; // never completes
   }

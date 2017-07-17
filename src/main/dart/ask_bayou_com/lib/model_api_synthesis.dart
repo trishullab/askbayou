@@ -24,7 +24,7 @@ part 'src/model/api_synthesis/synthesiser_http.dart';
 part 'src/model/api_synthesis/synthesiser_do_nothing.dart';
 part 'src/model/api_synthesis/json_response_completer.dart';
 
-void _parseResponseAndActivateCompleter(String json, Completer<List<String>> completer)
+void _parseResponseAndActivateCompleter(String json, Completer<SynthesiseResult> completer)
 {
   Map responseMap;
   {
@@ -61,7 +61,15 @@ void _parseResponseAndActivateCompleter(String json, Completer<List<String>> com
     return;
   }
 
-  List<String> results = responseMap[RESULTS];
+  String REQUEST_ID = "requestId";
+  if(!responseMap.containsKey(REQUEST_ID))
+  {
+    completer.completeError("JSON response does not contain requestId field", StackTrace.current);
+    return;
+  }
 
-  completer.complete(results);
+  List<String> results = responseMap[RESULTS];
+  String requetId = responseMap[REQUEST_ID];
+
+  completer.complete(new SynthesiseResult(results, requetId));
 }

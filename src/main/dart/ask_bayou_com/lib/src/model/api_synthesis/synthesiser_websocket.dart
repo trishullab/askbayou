@@ -31,9 +31,9 @@ class SynthesiserWebSocket extends Synthesiser
   SynthesiserWebSocket(this._endpoint);
 
   @override
-  Future<List<String>> synthesise(String code)
+  Future<SynthesiseResult> synthesise(String code)
   {
-    Completer<List<String>> completer = new Completer();
+    Completer<SynthesiseResult> completer = new Completer();
 
     WebSocket webSocket = new WebSocket(_endpoint); // connects socket as a function of construction
 

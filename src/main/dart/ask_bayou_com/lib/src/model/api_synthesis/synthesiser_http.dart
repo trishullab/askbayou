@@ -23,9 +23,9 @@ class SynthesiserHttp implements Synthesiser
   SynthesiserHttp(this._synthesiseEndpointUrl);
 
   @override
-  Future<List<String>> synthesise(String code)
+  Future<SynthesiseResult> synthesise(String code)
   {
-    Completer<List<String>> completer = new Completer();
+    Completer<SynthesiseResult> completer = new Completer();
 
     HttpRequest request = new HttpRequest();
 
