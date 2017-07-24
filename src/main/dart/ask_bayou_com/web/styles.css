@@ -100,7 +100,7 @@ html, body {
     margin: 0;
     background-color: lightgray;
     z-index: 100;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #info-box-header
