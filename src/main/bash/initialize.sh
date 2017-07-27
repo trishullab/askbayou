@@ -19,11 +19,11 @@ apt-get install unzip nfs-common
 
 adduser --gecos '' --disabled-password askbayou
 
-wget http://release.askbayou.com/bayou-1.0.0.zip
+wget $1
 
-mv bayou-1.0.0.zip /home/askbayou/bayou-1.0.0.zip
-sudo -u askbayou sh -c "unzip /home/askbayou/bayou-1.0.0.zip -d /home/askbayou"
-sudo -u askbayou sh -c "rm -f /home/askbayou/bayou-1.0.0.zip"
+mv bayou*.zip /home/askbayou/
+sudo -u askbayou sh -c "unzip /home/askbayou/bayou*.zip -d /home/askbayou"
+sudo -u askbayou sh -c "rm -f /home/askbayou/bayou*.zip"
 sudo -u askbayou sh -c "cp start_ask_bayou.sh /home/askbayou/start_ask_bayou.sh"
 sudo -u askbayou sh -c "cp ../log4j/apiSynthesisServerLog4j2.xml /home/askbayou/resources/conf/apiSynthesisServerLog4j2.xml"
 sudo -u askbayou sh -c "chmod +x /home/askbayou/*.sh"
