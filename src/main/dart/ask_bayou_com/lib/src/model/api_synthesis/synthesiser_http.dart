@@ -33,7 +33,7 @@ class SynthesiserHttp implements Synthesiser
     {
       if (request.readyState == HttpRequest.DONE)
       {
-          if(request.status != 200)
+          if(request.status != 200 && request.status != 400)
           {
             completer.completeError("Response code: " + request.status.toString(), StackTrace.current);
             return;

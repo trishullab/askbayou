@@ -50,6 +50,18 @@ void _parseResponseAndActivateCompleter(String json, Completer<SynthesiseResult>
     }
 
     String errorMsg = responseMap[ERROR_MESSAGE].toString();
+
+    if(errorMsg == "parseException")
+    {
+      String EXCEPTION_MESSAGE = "exceptionMessage";
+      if(responseMap.containsKey(EXCEPTION_MESSAGE))
+      {
+        String exceptionMessage = responseMap[EXCEPTION_MESSAGE];
+        completer.complete(new SynthesiseResultParseError(exceptionMessage));
+        return;
+      }
+    }
+
     completer.completeError(errorMsg, StackTrace.current);
     return;
   }
@@ -71,5 +83,5 @@ void _parseResponseAndActivateCompleter(String json, Completer<SynthesiseResult>
   List<String> results = responseMap[RESULTS];
   String requetId = responseMap[REQUEST_ID];
 
-  completer.complete(new SynthesiseResult(results, requetId));
+  completer.complete(new SynthesiseResultSuccess(results, requetId));
 }

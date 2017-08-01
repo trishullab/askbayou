@@ -48,11 +48,33 @@ abstract class Synthesiser
   Future<SynthesiseResult> synthesise(String code);
 }
 
-class SynthesiseResult
+abstract class SynthesiseResult
+{
+  void match(forSuccessCase(SynthesiseResultSuccess), forParseErrorCase(SynthesiseResultParseError));
+}
+
+class SynthesiseResultSuccess extends SynthesiseResult
 {
   final List<String> results;
 
   final String requestId;
 
-  SynthesiseResult(this.results, this.requestId);
+  SynthesiseResultSuccess(this.results, this.requestId);
+
+  void match(forSuccessCase(SynthesiseResultSuccess), forParseErrorCase(SynthesiseResultParseError))
+  {
+    forSuccessCase(this);
+  }
+}
+
+class SynthesiseResultParseError extends SynthesiseResult
+{
+  final String parseError;
+
+  SynthesiseResultParseError(this.parseError);
+
+  void match(forSuccessCase(SynthesiseResultSuccess), forParseErrorCase(SynthesiseResultParseError))
+  {
+    forParseErrorCase(this);
+  }
 }

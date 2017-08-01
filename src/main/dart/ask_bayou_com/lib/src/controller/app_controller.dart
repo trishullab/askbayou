@@ -153,21 +153,30 @@ class AppController
     _lastCodeSentToModelForSynthesis = program;
 
     _synthesiser.synthesise(program)
-        .then(_handleResultsAvailable)
+        .then(_handleSynthesizeComplete)
         .catchError(_handleSynthesiseError);
   }
 
   /**
    * When search results become available, switch to results mode and show results.
    */
-  void _handleResultsAvailable(SynthesiseResult result)
+  void _handleSynthesizeComplete(SynthesiseResult result)
   {
     _searchView.hide(); // n.b. also hides the spinner started in _handleSearchRequested
-    _resultsView.setViewModel(result.results);
-    _resultsView.show(); // n.b. restores search button hidden in _handleSearchRequested
-    _currentlyShownResults = result.results;
-    _lastSynthesizeResultRequestId = result.requestId;
 
+    result.match((SynthesiseResultSuccess successResult)
+        {
+          _resultsView.setViewModel(successResult.results);
+          _resultsView.show(); // n.b. restores search button hidden in _handleSearchRequested
+          _currentlyShownResults = successResult.results;
+          _lastSynthesizeResultRequestId = successResult.requestId;
+
+        },
+        (SynthesiseResultParseError parseErrorResult)
+        {
+          _searchView.setErrorMessage(parseErrorResult.parseError);
+          _searchView.show(); // n.b. restores the search button
+        });
   }
 
   /**
