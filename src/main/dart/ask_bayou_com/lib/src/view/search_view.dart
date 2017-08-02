@@ -336,7 +336,7 @@ public class TestWifi {
    */
   void setErrorMessage(String errorMessage)
   {
-    _errorMessage.innerHtml = errorMessage;
+    setEditorRightContent(errorMessage);
   }
 }
 
