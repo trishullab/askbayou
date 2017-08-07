@@ -136,8 +136,6 @@ class AppController
     _resultsView.hide();
     _searchView.setErrorMessage(errorMessage);
     _searchView.show();
-    _searchView.hideSearchButton(); // error message placement overlaps with search button so hide in case visible.
-    _searchView.hideSpinner(); // error message placement overlaps with spinner so hide in case visible.
   }
 
   /**
@@ -184,6 +182,8 @@ class AppController
    */
   void _handleSynthesiseError(String errorMessage)
   {
+    _searchView.hideSpinner();
+    _searchView.show(); // n.b. restores the search button
     print(errorMessage);
     _showErrorMessage("Unexpected error. Please retry.");
   }
