@@ -92,11 +92,9 @@ html, body {
 {
     position: absolute;
     padding: 10px 10px 60px;
-    top: 175px;
-    right: 30px;
-    width: 38%;
-    height: auto;
-    bottom: 80px;
+    top: 65px;
+    left: 55px;
+    right: 15px;
     margin: 0;
     background-color: lightgray;
     z-index: 100;
