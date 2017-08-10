@@ -45,7 +45,7 @@ class SynthesiserHttp implements Synthesiser
 
     request.open("POST", _synthesiseEndpointUrl);
 
-    Map<String,String> requestMap = { "code" : code };
+    Map<String,String> requestMap = { "code" : code, "max program count" : 10 };
     String json = JSON.encode(requestMap);
     request.send(json);
 
