@@ -21,6 +21,9 @@ editorLeft.setOption("enableBasicAutocompletion", true);
 var evidenceCompleter = {
     getCompletions: function(editor, session, pos, prefix, callback) {
         var wordList = [
+            "calls:",
+            "types:",
+            "context:",
             "getInputStream",
             "startPreview",
             "setMessage",
