@@ -241,6 +241,7 @@ public class TestWifi {
     _searchButton.onClick.listen((_) { _handleSearchButtonClicked(); });
     _sourceSelect.onChange.listen((_) { _handleSourceSelectChanged(); } );
     _populateLeftEditorFromSourceSelect();
+    registerLeftEditorChangeListener();
   }
 
   /**
@@ -345,3 +346,4 @@ public class TestWifi {
  */
 @JS()
 external setEditorLeftContent(String content);
+external registerLeftEditorChangeListener();

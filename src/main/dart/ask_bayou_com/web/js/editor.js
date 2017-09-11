@@ -17,6 +17,32 @@ var editorLeft = ace.edit("editor-left");
 editorLeft.setTheme("ace/theme/github");
 editorLeft.getSession().setMode("ace/mode/java");
 editorLeft.setOption("showPrintMargin", false);
+editorLeft.setOption("enableBasicAutocompletion", true);
+var evidenceCompleter = {
+    getCompletions: function(editor, session, pos, prefix, callback) {
+        var wordList = [
+            "getInputStream",
+            "startPreview",
+            "setMessage",
+            "setTitle",
+            "readLine",
+            "printStackTrace",
+            "startScan",
+            "BluetoothSocket",
+            "AlertDialog",
+            "SpeechRecognizer",
+            "WifiManager"
+        ];
+        callback(null, wordList.map(function(word) {
+            return {
+                name: word,
+                value: word,
+                meta: "evidence"
+            };
+        }));
+    }
+};
+editorLeft.completers = [evidenceCompleter];
 
 var editorRight = ace.edit("editor-right");
 editorRight.setTheme("ace/theme/github");
@@ -50,4 +76,20 @@ function setEditorRightContent(content)
 {
     editorRight.setValue(content);
     editorRight.gotoLine(1, 0); // Without this ACE will highlight the entire content of the editor.
+}
+
+function registerLeftEditorChangeListener()
+{
+    editorLeft.on("change", detectTripleSlash);
+}
+
+function detectTripleSlash(e)
+{
+    // check if line has ///
+    var currLine = editorLeft.getSelectionRange().start.row;
+    var lineContent = editorLeft.session.getLine(currLine);
+    if (lineContent.includes("///"))
+        editorLeft.setOption("enableLiveAutocompletion", true);
+    else
+        editorLeft.setOption("enableLiveAutocompletion", false);
 }
