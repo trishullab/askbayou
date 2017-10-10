@@ -20,29 +20,25 @@ editorLeft.setOption("showPrintMargin", false);
 editorLeft.setOption("enableBasicAutocompletion", true);
 var evidenceCompleter = {
     getCompletions: function(editor, session, pos, prefix, callback) {
-        var wordList = [
-            "calls:",
-            "types:",
-            "context:",
-            "getInputStream",
-            "startPreview",
-            "setMessage",
-            "setTitle",
-            "readLine",
-            "printStackTrace",
-            "startScan",
-            "BluetoothSocket",
-            "AlertDialog",
-            "SpeechRecognizer",
-            "WifiManager"
-        ];
-        callback(null, wordList.map(function(word) {
+        callback(null, apicalls.map(function(word) {
             return {
                 name: word,
                 value: word,
-                meta: "evidence"
+                meta: "API call"
             };
-        }));
+        }).concat(types.map(function(word) {
+            return {
+                name: word,
+                value: word,
+                meta: "Type"
+            };
+        })).concat(keywords.map(function(word) {
+            return {
+                name: word,
+                value: word,
+                meta: "Keyword"
+            };
+        })));
     }
 };
 editorLeft.completers = [evidenceCompleter];
