@@ -33,3 +33,5 @@ cp ../fstab/fstab /etc/fstab
 
 cp ../systemd/askbayou.service /etc/systemd/system/
 systemctl enable askbayou.service
+
+/home/askbayou/install_dependencies.sh
