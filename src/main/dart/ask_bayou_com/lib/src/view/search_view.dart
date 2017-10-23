@@ -33,189 +33,63 @@ class SearchView
 
   final Map<String,String> _filenameToContent =
   {
-    "Bluetooth" :
+
+
+    "File Read 1" :
     """
-import edu.rice.cs.caper.bayou.annotations.Evidence;
-import android.bluetooth.BluetoothAdapter;
-
-// Bayou supports three types of evidence:
-// 1. apicalls - API methods the code should invoke
-// 2. types - datatypes of objects which invoke API methods
-// 3. context - datatypes of variables that the code should use
-
-public class TestBluetooth {
-
-    /* Get an input stream that can be used to read from
-     * the given blueooth hardware address */
-    void readFromBluetooth(BluetoothAdapter adapter) {
-        // Intersperse code with evidence
-        String address = "00:43:A8:23:10:F0";
-
-        { // Provide evidence within a separate block
-            // Code should call "getInputStream"...
-            Evidence.apicalls("getInputStream");
-            // ...on a "BluetoothSocket" type
-            Evidence.types("BluetoothSocket");
-        } // Synthesized code will replace this block
-    }
-
-}
-""",
-    "Camera":
-"""
-import edu.rice.cs.caper.bayou.annotations.Evidence;
-
-// Bayou supports three types of evidence:
-// 1. apicalls - API methods the code should invoke
-// 2. types - datatypes of objects which invoke API methods
-// 3. context - datatypes of variables that the code should use
-
-public class TestCamera {
-
-    /* Start a preview of the camera, by setting the
-     * preview's width and height using the given ints */
-    void preview() {
-        // Intersperse code with evidence
-        int width = 640;
-        int height = 480;
-
-        { // Provide evidence within a separate block
-            // Code should call "startPreview"...
-            Evidence.apicalls("startPreview");
-            // ...and use an "int" as argument
-            Evidence.context("int");
-        } // Synthesized code will replace this block
-    }
-
-}
-""",
-    "Dialog":
-"""
-import edu.rice.cs.caper.bayou.annotations.Evidence;
-import android.content.Context;
-
-// Bayou supports three types of evidence:
-// 1. apicalls - API methods the code should invoke
-// 2. types - datatypes of objects which invoke API methods
-// 3. context - datatypes of variables that the code should use
-
-public class TestDialog {
-
-    /* Create an alert dialog with the given strings
-     * as content (title and message) in the dialog */
-    void createDialog(Context c) {
-        // Intersperse code with evidence
-        String str1 = "something here";
-        String str2 = "another thing here";
-
-        { // Provide evidence within a separate block
-            // Code should call "setTitle" and "setMessage"...
-            Evidence.apicalls("setTitle", "setMessage");
-            // ...on an "AlertDialog" type
-            Evidence.types("AlertDialog");
-        } // Synthesized code will replace this block
-    }
-
-}
-""",
-    "IO":
-"""
-import edu.rice.cs.caper.bayou.annotations.Evidence;
-
-// Bayou supports three types of evidence:
-// 1. apicalls - API methods the code should invoke
-// 2. types - datatypes of objects which invoke API methods
-// 3. context - datatypes of variables that the code should use
-
 public class TestIO {
 
-    // NOTE: Bayou only supports one synthesis task in a given
-    // program at a time, so please comment out the rest.
-
-    /* Read from a file */
-    void read(String file) {
-        { // Provide evidence within a separate block
-            // Code should call "readLine"
-            Evidence.apicalls("readLine");
-        } // Synthesized code will replace this block
-    }
-
-    /*
-    // Read from a file, more specifically using the
-    // string argument given
     void read(String file) {
         {
-            Evidence.apicalls("readLine");
-            Evidence.context("String");
+            /// call:readLine type:FileReader
         }
     }
-    */
+}
+""",
+    "File Read 2":
+"""
+public class TestIO {
 
-    /*
-    // Read from the file, performing exception handling
-    // properly by printing the stack trace
-    void readWithErrorHandling() {
-        String file;
+    void read(String file) {
         {
-            Evidence.apicalls("readLine", "printStackTrace", "close");
-            Evidence.context("String");
+            /// read line from file type:FileReader
         }
     }
-    */
 }
 """,
-    "Speech":
-    """
-import edu.rice.cs.caper.bayou.annotations.Evidence;
-import android.content.Context;
-import android.content.Intent;
-import android.speech.RecognitionListener;
+    "File Read 3":
+"""
+public class TestIO {
 
-// Bayou supports three types of evidence:
-// 1. apicalls - API methods the code should invoke
-// 2. types - datatypes of objects which invoke API methods
-// 3. context - datatypes of variables that the code should use
-
-public class TestSpeech {
-
-    /* Construct a speech regonizer with the provided listener */
-    void speechRecognition(Context context, Intent intent, RecognitionListener listener) {
-        { // Provide evidence within a separate block
-            // Code should make API calls on "SpeechRecognizer"...
-            Evidence.types("SpeechRecognizer");
-            // ...and use a "Context" as argument
-            Evidence.context("Context");
-        } // Synthesized code will replace this block
+    void read(String file) {
+        {
+            /// read line from file
+        }
     }
-
 }
 """,
-    "Wifi":
+    "File Read 4":
     """
-import edu.rice.cs.caper.bayou.annotations.Evidence;
-import android.net.wifi.WifiManager;
+public class TestIO {
 
-// Bayou supports three types of evidence:
-// 1. apicalls - API methods the code should invoke
-// 2. types - datatypes of objects which invoke API methods
-// 3. context - datatypes of variables that the code should use
-
-public class TestWifi {
-
-    /* Start a wi-fi scan using the given manager */
-    void scan(WifiManager manager) {
-        { // Provide evidence within a separate block
-            // Code should call "startScan"...
-            Evidence.apicalls("startScan");
-            // ...on a "WifiManager" type
-            Evidence.types("WifiManager");
-        } // Synthesized code will replace this block
-
+    void read(String file) {
+        {
+            /// read line from file call:printStackTrace
+        }
     }
+}
+""",
+    "File Write":
+"""
+public class TestIO {
 
+    void read(String file, String toWrite) {
+        {
+            /// write to file type:FileWriter
+        }
+    }
 }
 """
-
   };
 
   /**
