@@ -17,7 +17,7 @@
 export EC2_INSTANCE_ID=$(ec2metadata --instance-id)
 
 mkdir -p efs_logs
-mkdir =p efs_logs/$EC2_INSTANCE_ID
+mkdir -p efs_logs/$EC2_INSTANCE_ID
 
 ./start_bayou.sh logs:efs_logs/$EC2_INSTANCE_ID &
 
