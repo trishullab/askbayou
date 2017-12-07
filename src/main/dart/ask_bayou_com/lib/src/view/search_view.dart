@@ -35,61 +35,78 @@ class SearchView
   {
 
 
-    "File Read 1" :
+    "File Read" :
     """
 public class TestIO {
 
     void read(String file) {
         {
-            /// call:readLine type:FileReader
-        }
-    }
-}
-""",
-    "File Read 2":
-"""
-public class TestIO {
-
-    void read(String file) {
-        {
-            /// read line from file type:FileReader
-        }
-    }
-}
-""",
-    "File Read 3":
-"""
-public class TestIO {
-
-    void read(String file) {
-        {
-            /// read line from file
-        }
-    }
-}
-""",
-    "File Read 4":
-    """
-public class TestIO {
-
-    void read(String file) {
-        {
-            /// read line from file call:printStackTrace
+            /// read file
         }
     }
 }
 """,
     "File Write":
-"""
+    """
 public class TestIO {
 
-    void read(String file, String toWrite) {
+    void write(String file, String toWrite) {
         {
-            /// write to file type:FileWriter
+            /// calls:write type:FileWriter
         }
     }
 }
-"""
+""",
+    "SQL query":
+    """
+import java.sql.Connection;
+
+public class TestSQL {
+
+    void execute(Connection connection, String query) {
+        {
+            /// execute sql query
+        }
+    }
+}
+""",
+    "Parse XML":
+  """
+import java.io.File;
+
+public class TestXML {
+
+    void parse(File file) {
+        {
+            /// parse xml document type:File
+        }
+    }
+}
+  """,
+    "Generate key pair":
+  """
+public class TestKeyPair {
+
+    void generate(String algorithm) {
+        {
+            /// generate secure key pair
+        }
+    }
+}
+  """,
+    "Remove list":
+    """
+import java.util.List;
+
+public class TestList {
+
+    void generate(List<String> list) {
+        {
+            /// type:Iterator call:remove
+        }
+    }
+}
+  """
   };
 
   /**

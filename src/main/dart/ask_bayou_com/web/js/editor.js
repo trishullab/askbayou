@@ -23,20 +23,23 @@ var evidenceCompleter = {
         callback(null, apicalls.map(function(word) {
             return {
                 name: word,
-                value: word,
-                meta: "API call"
+                value: "call:" + word,
+                meta: "API call",
+                score: -apicalls.indexOf(word)
             };
         }).concat(types.map(function(word) {
             return {
                 name: word,
-                value: word,
-                meta: "Type"
+                value: "type:" + word,
+                meta: "Type",
+                score: -types.indexOf(word)
             };
         })).concat(keywords.map(function(word) {
             return {
                 name: word,
                 value: word,
-                meta: "Keyword"
+                meta: "Keyword",
+                score: -keywords.indexOf(word)
             };
         })));
     }
