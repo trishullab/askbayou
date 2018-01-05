@@ -25,6 +25,6 @@ tail -F logs/ApiSynthesisServer.log logs/ast_server.log |
 grep --line-buffered ERROR |
 while read line
 do
-    echo "$line" | mail -s "Alert $EC2_INSTANCE_ID" rmbarnett@gmail.com
+    echo "$line" | mail -s "Alert $EC2_INSTANCE_ID" user@mail.com
 done
 
