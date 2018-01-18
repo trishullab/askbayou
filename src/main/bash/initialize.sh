@@ -14,12 +14,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# The single parameter to this script is the URL to binary Bayou release to be installed.
+# e.g. http://release.askbayou.com/bayou-1.0.0.zip
+
 apt-get update
 apt-get install unzip nfs-common
 
-adduser --gecos '' --disabled-password askbayou
+adduser --gecos '' --disabled-password askbayou # the user Bayou will run as on the server
 
-wget $1
+wget $1 # get the Bayou binary release to install
 
 mv bayou*.zip /home/askbayou/
 sudo -u askbayou sh -c "unzip /home/askbayou/bayou*.zip -d /home/askbayou"
@@ -29,9 +32,9 @@ sudo -u askbayou sh -c "cp ../log4j/apiSynthesisServerLog4j2.xml /home/askbayou/
 sudo -u askbayou sh -c "chmod +x /home/askbayou/*.sh"
 sudo -u askbayou sh -c "mkdir /home/askbayou/efs_logs"
 
-cp ../fstab/fstab /etc/fstab
+cp ../fstab/fstab /etc/fstab # mount the nfs log directory on each boot
 
 cp ../systemd/askbayou.service /etc/systemd/system/
-systemctl enable askbayou.service
+systemctl enable askbayou.service # install askbayou as a service
 
-/home/askbayou/install_dependencies.sh
+/home/askbayou/install_dependencies.sh # install all the dependencies of Bayou
