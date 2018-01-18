@@ -17,7 +17,7 @@
 export EC2_INSTANCE_ID=$(ec2metadata --instance-id)
 
 mkdir -p efs_logs
-mkdir =p efs_logs/$EC2_INSTANCE_ID
+mkdir -p efs_logs/$EC2_INSTANCE_ID
 
 ./start_bayou.sh logs:efs_logs/$EC2_INSTANCE_ID &
 
@@ -25,6 +25,6 @@ tail -F logs/ApiSynthesisServer.log logs/ast_server.log |
 grep --line-buffered ERROR |
 while read line
 do
-    echo "$line" | mail -s "Alert $EC2_INSTANCE_ID" rmbarnett@gmail.com
+    echo "$line" | mail -s "Alert $EC2_INSTANCE_ID" user@mail.com
 done
 
