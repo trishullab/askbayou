@@ -37,4 +37,4 @@ cp ../fstab/fstab /etc/fstab # mount the nfs log directory on each boot
 cp ../systemd/askbayou.service /etc/systemd/system/
 systemctl enable askbayou.service # install askbayou as a service
 
-/home/askbayou/install_dependencies.sh # install all the dependencies of Bayou
+/home/askbayou/install_dependencies.sh --oracle # install all the dependencies of Bayou
