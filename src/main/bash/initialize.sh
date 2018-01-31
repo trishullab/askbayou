@@ -18,6 +18,7 @@
 # e.g. http://release.askbayou.com/bayou-1.0.0.zip
 
 apt-get update
+apt-get upgrade
 apt-get install unzip nfs-common
 
 adduser --gecos '' --disabled-password askbayou # the user Bayou will run as on the server
