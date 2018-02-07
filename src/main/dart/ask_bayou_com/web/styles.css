@@ -19,7 +19,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: Tahoma, Times, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .no-select {
@@ -150,7 +150,7 @@ html, body {
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
-    font-family: Tahoma, Times, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: small;
     background-color: black;
     color: white;
@@ -192,7 +192,7 @@ html, body {
     position: absolute;
     top: 25px;
     left: 275px;
-    font-family: Tahoma, Times, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: large;
     color: white;
 }
@@ -203,7 +203,7 @@ html, body {
     right: 3%;
     height: 100%;
     line-height: 75px;
-    font-family: Tahoma, Times, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: large;
     color: white;
     background: #5791CF;
@@ -216,7 +216,7 @@ html, body {
     right: 10%;
     height: 100%;
     line-height: 75px;
-    font-family: Tahoma, Times, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: large;
     color: white;
     background: #5791CF;
@@ -228,7 +228,7 @@ html, body {
     position: absolute;
     top: 25%;
     left: 3%;
-    font-family: Tahoma, Times, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: large;
     color: white;
 }
@@ -240,7 +240,7 @@ html, body {
     position: absolute;
     top: 25%;
     left: 3%;
-    font-family: Tahoma, Times, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: large;
     color: white;
 }
@@ -260,7 +260,7 @@ html, body {
     position: absolute;
     top: 25%;
     right: 3%;
-    font-family: Tahoma, Times, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: large;
     color: white;
     display: none;
@@ -291,7 +291,7 @@ html, body {
 #result-number
 {
     position: absolute;
-    font-family: Tahoma, Times, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: large;
     color: white;
 }
@@ -301,7 +301,7 @@ html, body {
     position: absolute;
     top: 10px;
     right: 60px;
-    font-family: Tahoma, Times, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     box-shadow: #5791CF;
 }
 
@@ -329,7 +329,7 @@ html, body {
 #footer
 {
     position: absolute;
-    font-family:  Tahoma, Times, sans-serif;
+    font-family:  Helvetica, Arial, sans-serif;
     font-size:small;
     left: 25px;
     right: 25px;
