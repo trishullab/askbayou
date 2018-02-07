@@ -41,7 +41,7 @@ public class TestIO {
 
     void read(String file) {
         {
-            /// read file
+            /// call:readLine type:File
         }
     }
 }
@@ -65,7 +65,7 @@ public class TestSQL {
 
     void execute(Connection connection, String query) {
         {
-            /// execute sql query
+            /// call:executeQuery
         }
     }
 }
@@ -78,7 +78,7 @@ public class TestXML {
 
     void parse(File file) {
         {
-            /// parse xml document type:File
+            /// call:parse type:Document
         }
     }
 }
@@ -89,7 +89,7 @@ public class TestKeyPair {
 
     void generate(String algorithm) {
         {
-            /// generate secure key pair
+            /// type:KeyPairGenerator
         }
     }
 }
