@@ -81,7 +81,13 @@ void _parseResponseAndActivateCompleter(String json, Completer<SynthesiseResult>
   }
 
   List<String> results = responseMap[RESULTS];
+  List<String> newResults = new List<String>();
+  for (int i = 0; i < results.length; i++) {
+    String newResult = results[i].replaceAll("import edu.rice.cs.caper.bayou.annotations.Bayou;\n", "")
+                                 .replaceAll("Bayou\.\$init()", "/* initialize this variable */");
+    newResults.add(newResult);
+  }
   String requetId = responseMap[REQUEST_ID];
 
-  completer.complete(new SynthesiseResultSuccess(results, requetId));
+  completer.complete(new SynthesiseResultSuccess(newResults, requetId));
 }

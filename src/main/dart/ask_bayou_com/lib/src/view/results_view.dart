@@ -269,7 +269,7 @@ class ResultsView
     if(_vm.isEmpty)
     {
       _resultIndex = null;
-      setEditorRightContent("");
+      setEditorRightContent("Could not synthesize your intended program. Please refine your query.");
       _resultsSelector.style.display = "none"; // n.b. safe to do no matter what _isShown state is
     }
     else
