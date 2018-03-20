@@ -52,6 +52,8 @@ editorRight.getSession().setMode("ace/mode/java");
 editorRight.setOption("showPrintMargin", false);
 editorRight.setReadOnly(true);
 
+var Range = require("ace/range").Range;
+
 /**
  * Gets the code content of the left editor.
  */
@@ -90,8 +92,11 @@ function detectTripleSlash(e)
     // check if line has ///
     var currLine = editorLeft.getSelectionRange().start.row;
     var lineContent = editorLeft.session.getLine(currLine);
-    if (lineContent.includes("///"))
+    if (lineContent.includes("///")) {
         editorLeft.setOption("enableLiveAutocompletion", true);
+        editorLeft.session.replace(new Range(currLine, 0, currLine, Number.MAX_VALUE),
+                lineContent.replace(/ [a-zA-Z0-9_:]+call:/, " call:").replace(/ [a-zA-Z0-9_:]+type:/, " type:"));
+    }
     else
         editorLeft.setOption("enableLiveAutocompletion", false);
 }
