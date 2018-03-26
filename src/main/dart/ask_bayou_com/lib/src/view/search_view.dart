@@ -29,8 +29,6 @@ class SearchView
 
   final SelectElement _sourceSelect = querySelector("#source-select");
 
-  final Element _infoBox = querySelector("#info-box");
-
   final Map<String,String> _filenameToContent =
   {
 
@@ -194,8 +192,6 @@ public class TestList {
   {
     if(!_isShown) // needed because both views use the same search button and as such both will get the click event.
       return;
-
-    _infoBox.style.display = "none"; // hide info box since it covers the area where results are shown.
 
     String editorContent = getEditorLeftContent();
     _onSearchRequestedController.add(editorContent);
