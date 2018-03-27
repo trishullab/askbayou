@@ -100,3 +100,28 @@ function detectTripleSlash(e)
     else
         editorLeft.setOption("enableLiveAutocompletion", false);
 }
+
+function checkEvidenceInVocab(editorContent)
+{
+    var evidenceLine = editorContent.substring(editorContent.indexOf("///")+3);
+    evidenceLine = evidenceLine.substring(0, evidenceLine.indexOf("\n"));
+    var evidences = evidenceLine.split(" ");
+    for (var i = 0; i < evidences.length; i++) {
+        var evidence = evidences[i].trim();
+        if (evidence === "")
+            continue;
+        if (evidence.length <= 5)
+            return evidence;
+        var evidenceType = evidence.substring(0, 5);
+        if (evidenceType === "call:") {
+            evidence = evidence.substring(5);
+            if (apicalls.indexOf(evidence) < 0) return "call:" + evidence;
+        }
+        else if (evidenceType === "type:") {
+            evidence = evidence.substring(5);
+            if (types.indexOf(evidence) < 0) return "type:" + evidence;
+        }
+        else return evidence;
+    }
+    return null;
+}

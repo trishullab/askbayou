@@ -194,7 +194,11 @@ public class TestList {
       return;
 
     String editorContent = getEditorLeftContent();
-    _onSearchRequestedController.add(editorContent);
+    String invalidEvidence = checkEvidenceInVocab(editorContent);
+    if (invalidEvidence == null)
+      _onSearchRequestedController.add(editorContent);
+    else
+      setEditorRightContent("Invalid query term " + invalidEvidence + ".\nPlease select only from the suggestions.");
   }
 
 
@@ -234,3 +238,4 @@ public class TestList {
 @JS()
 external setEditorLeftContent(String content);
 external registerLeftEditorChangeListener();
+external checkEvidenceInVocab(String content);
