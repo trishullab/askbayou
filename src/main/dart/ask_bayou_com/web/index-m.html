@@ -19,9 +19,6 @@ Copyright 2017 Rice University
 <html>
 <head>
     <script type="text/javascript">
-        if (window.innerWidth <= 699) {
-            window.location.replace("index-m.html");
-        }
     </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,7 +28,7 @@ Copyright 2017 Rice University
     <link rel="icon" type="image/ico" href="favicon.ico"/>
 
     <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-m.css">
     <link rel="stylesheet" href="intro-js-min/introjs.min.css">
     <!--<link rel="stylesheet" href="intro-js-min/introjs-modern.css">-->
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"> <!-- for UI icons -->
@@ -50,11 +47,6 @@ Copyright 2017 Rice University
 
 <div id="header">
     <img src="img/bayou-logo-v2.png" align="left" width="255" height="85" id="logo">
-    <label id="tagline">Deep Generation of API Usage Idioms</label>
-    <label id="about" onmouseover="this.style.backgroundColor='#27588b';"
-                      onmouseleave="this.style.backgroundColor='#5791CF';"
-                      onmousedown="window.location.href = 'http://info.askbayou.com';">
-        &nbsp&nbsp&nbsp About &nbsp&nbsp&nbsp</label>
     <label id="info" onmouseover="this.style.backgroundColor='#27588b';"
            onmouseleave="this.style.backgroundColor='#5791CF';"
            onmousedown="window.location.href = 'https://info.askbayou.com/how-to-use-bayou/';">
@@ -65,33 +57,23 @@ Copyright 2017 Rice University
 </div>
 
 <div id="editor-left-header">
-    <label id="heading-left">Enter Your Code Here</label>
-    <select id="source-select" data-step="4" data-intro="Browse more examples of using Bayou">
+    <label id="heading-left">Enter Code</label>
+    <select id="source-select">
         <option>File Read</option>
         <option>File Write</option>
-<!--        <option>SQL query</option>
-        <option>Parse XML</option>
-        <option>Generate key pair</option> -->
+        <!--        <option>SQL query</option>
+                <option>Parse XML</option>
+                <option>Generate key pair</option> -->
         <option>Remove list</option>
     </select>
     <i id="search-spinner" class="loader" aria-hidden="true"></i> <!-- searching indicator,
                                                                                              initially hidden. -->
-    <i id="search-button"  class="fa fa-search fa-2x tooltip" aria-hidden="true"
-       data-step="2" data-intro="Ask Bayou to generate programs with your query">
+    <i id="search-button"  class="fa fa-search fa-2x tooltip" aria-hidden="true">
         <span class="tooltiptext">Generate code</span>
     </i>
 </div>
 
-<div id="editor-left"
-     data-step="1"
-     data-intro="
-     Type your code here
-     <span style='font-size: small'>
-     <ul> <li> Specify queries with ///
-          <li> Query can contain API calls or types that the generated programs should use
-          <li> Bayou is based on <a href='https://arxiv.org/abs/1703.05698'>Neural Sketch Learning</a>
-     </ul>
-     </span>">
+<div id="editor-left">
     <!-- ACE editor for taking user search input -->
 </div>
 
@@ -134,7 +116,19 @@ Copyright 2017 Rice University
     ga('create', 'UA-102593520-1', 'auto');
     ga('send', 'pageview');
 
-    introJs().start();
+    var intro = introJs();
+    intro.setOptions({
+        steps: [
+            {
+                intro: "Welcome to Bayou! <span style='font-size: small'>" +
+                "<ul><li>Write code with queries starting with ///</li>" +
+                "<li>Queries can be API calls or types that you wish to appear in your code</li>" +
+                "<li>Click the search button. Bayou will fill in the rest!</li></ul></span>"
+            }
+        ]
+    }).setOption('showBullets', false).setOption('showStepNumbers', false);
+
+    intro.start();
 
 </script>
 </body>

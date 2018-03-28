@@ -1,0 +1,358 @@
+/*
+Copyright 2016 Rice University
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+#editor-left {
+    position: absolute;
+    top: 150px;
+    left: 25px;
+    right: 25px;
+    height: 300px;
+    padding: 0;
+    margin: 0;
+    border-width: medium;
+    border-style: solid;
+    border-color: #5791CF;
+}
+
+#editor-left-header {
+    position: absolute;
+    top: 100px;
+    left: 25px;
+    right: 25px;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    background-color: #5791CF;
+    border-width: medium;
+    border-style: solid;
+    border-color: #5791CF;
+}
+
+#editor-right {
+    position: absolute;
+    top: 525px;
+    left: 25px;
+    right: 25px;
+    height: 300px;
+    bottom: 70px;
+    padding: 0;
+    margin: 0;
+    display: none;
+    border-width: medium;
+    border-style: solid;
+    border-color: #5791CF;
+}
+
+#editor-right-header {
+    position: absolute;
+    top: 475px;
+    right: 25px;
+    left: 25px;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    background-color: #5791CF;
+    border-width: medium;
+    border-style: solid;
+    border-color: #5791CF;
+}
+
+#info-box
+{
+    position: absolute;
+    padding: 10px 10px 60px;
+    top: 65px;
+    left: 55px;
+    right: 15px;
+    margin: 0;
+    background-color: lightgray;
+    z-index: 100;
+    overflow: auto;
+}
+
+#info-box-header
+{
+    background-color: darkgray;
+    text-align: center;
+    padding: 4px;
+}
+
+#header
+{
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 75px;
+    background-color: #5791CF;
+
+    /* "optimized" ver. by WebStorm does not render correctly in Chrome */
+    /*noinspection CssOptimizeSimilarProperties*/
+    border-bottom-color: #838383;
+
+    /* "optimized" ver. by WebStorm does not render correctly in Chrome */
+    /*noinspection CssOptimizeSimilarProperties*/
+    border-width: 0 0 1px 0; /* 1px needs to match height calculation in #editor-left, #editor-right */
+
+    /* "optimized" ver. by WebStorm does not render correctly in Chrome */
+    /*noinspection CssOptimizeSimilarProperties*/
+    border-style: solid;
+
+    display:flex;            /* to center title */
+    align-items: center;     /* to center title */
+    justify-content: center; /* to center title */
+}
+
+#title
+{
+    position: relative;
+    left: 20px;
+    font-size: 4vh;
+    cursor: default;
+}
+
+.tooltip {
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: small;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 2;
+    top: 100%;
+    left: 50%;
+    margin-left: -75px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+#search-spinner
+{
+    position: absolute;
+    top: 5px;
+    right: 2%;
+    display: none;
+    color: white;
+}
+
+.loader {
+    border: 5px solid #FFFFFF;
+    border-radius: 50%;
+    border-top: 5px solid #000000;
+    width: 25px;
+    height: 25px;
+    -webkit-animation: spin 1s linear infinite; /* Safari */
+    animation: spin 1s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#logo
+{
+    position: absolute;
+    left: 25px;
+    top: 0;
+    height: 101%;
+    width: auto;
+    cursor: pointer;
+}
+
+#tagline
+{
+    position: absolute;
+    top: 25px;
+    left: 275px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: large;
+    color: white;
+}
+
+#about
+{
+    position: absolute;
+    right: 3%;
+    height: 100%;
+    line-height: 75px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: large;
+    color: white;
+    background: #5791CF;
+    cursor: pointer;
+}
+
+#info
+{
+    position: absolute;
+    right: 10%;
+    height: 100%;
+    line-height: 75px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: large;
+    color: white;
+    background: #5791CF;
+    cursor: pointer;
+}
+
+#heading-left
+{
+    position: absolute;
+    top: 25%;
+    left: 3%;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: large;
+    color: white;
+}
+
+
+
+#heading-right
+{
+    position: absolute;
+    top: 25%;
+    left: 3%;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: large;
+    color: white;
+}
+
+#search-button
+{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    display: none;
+    cursor: pointer;
+    color: white;
+}
+
+#error-message
+{
+    position: absolute;
+    top: 25%;
+    right: 3%;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: large;
+    color: white;
+    display: none;
+}
+
+#results-selector
+{
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 2% ;
+    font-size: large;
+
+}
+
+#result-left-button
+{
+    cursor: pointer;
+    color: white;
+}
+
+#result-right-button
+{
+    cursor: pointer;
+    color: white;
+}
+
+#result-number
+{
+    position: absolute;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: large;
+    color: white;
+}
+
+#source-select
+{
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    font-family: Helvetica, Arial, sans-serif;
+    box-shadow: #5791CF;
+}
+
+#like-selector
+{
+    top: 10px;
+    position: absolute;
+    right: 80px;
+}
+
+#like-button
+{
+    display: none;
+    cursor: pointer;
+    color: white;
+}
+
+#dislike-button
+{
+    display: none;
+    cursor: pointer;
+    color: white;
+}
+
+#footer
+{
+    position: absolute;
+    font-family:  Helvetica, Arial, sans-serif;
+    font-size:small;
+    left: 25px;
+    right: 25px;
+    top: 850px;
+    color: #838383;
+}
