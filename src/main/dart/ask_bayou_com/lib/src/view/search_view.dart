@@ -50,7 +50,7 @@ public class TestIO {
 
     void write(String file, String toWrite) {
         {
-            /// calls:write type:FileWriter
+            /// call:write type:FileWriter
         }
     }
 }
@@ -167,7 +167,6 @@ public class TestList {
     //_editorLeft.style.width = "100%";
     _searchButton.style.display = 'block';
     _errorMessage.style.display = "inline";
-    _sourceSelect.style.display = "block";
     _isShown = true;
   }
 
@@ -181,7 +180,6 @@ public class TestList {
     _searchButton.style.display = 'none';
     _errorMessage.style.display = "none";
     _searchSpinner.style.display = "none";
-    _sourceSelect.style.display = "none";
     _isShown = false;
   }
 
