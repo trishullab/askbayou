@@ -159,7 +159,12 @@ class ResultsView
     if(!_isShown) // needed because both views use the same search button and as such both will get the click event.
       return;
 
-    _onSearchRequestedController.add(getEditorLeftContent());
+    String editorContent = getEditorLeftContent();
+    String invalidEvidence = checkEvidenceInVocab(editorContent);
+    if (invalidEvidence == null)
+      _onSearchRequestedController.add(getEditorLeftContent());
+    else
+      setEditorRightContent("Invalid query term " + invalidEvidence + ".\nPlease select only from the suggestions.");
   }
 
   /**
