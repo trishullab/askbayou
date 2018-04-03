@@ -110,8 +110,6 @@ function checkEvidenceInVocab(editorContent)
         var evidence = evidences[i].trim();
         if (evidence === "")
             continue;
-        if (evidence.length <= 5)
-            return evidence;
         var evidenceType = evidence.substring(0, 5);
         if (evidenceType === "call:") {
             evidence = evidence.substring(5);
@@ -121,7 +119,7 @@ function checkEvidenceInVocab(editorContent)
             evidence = evidence.substring(5);
             if (types.indexOf(evidence) < 0) return "type:" + evidence;
         }
-        else return evidence;
+        else if (keywords.length === 0) return evidence;
     }
     return null;
 }
