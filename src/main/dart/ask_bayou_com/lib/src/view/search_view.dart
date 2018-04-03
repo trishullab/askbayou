@@ -35,20 +35,22 @@ class SearchView
 
     "File Read" :
     """
+import java.io.*;
+import java.util.*;
 public class TestIO {
-
-    void read(String file) {
+    void read(File file) {
         {
-            /// call:readLine type:File
+            /// call:readLine
         }
     }
 }
 """,
     "File Write":
     """
+import java.io.*;
+import java.util.*;
 public class TestIO {
-
-    void write(String file, String toWrite) {
+    void write(File file, String toWrite) {
         {
             /// call:write type:FileWriter
         }
@@ -58,9 +60,7 @@ public class TestIO {
     "SQL query":
     """
 import java.sql.Connection;
-
 public class TestSQL {
-
     void execute(Connection connection, String query) {
         {
             /// call:executeQuery
@@ -71,9 +71,7 @@ public class TestSQL {
     "Parse XML":
   """
 import java.io.File;
-
 public class TestXML {
-
     void parse(File file) {
         {
             /// call:parse type:Document
@@ -84,7 +82,6 @@ public class TestXML {
     "Generate key pair":
   """
 public class TestKeyPair {
-
     void generate(String algorithm) {
         {
             /// type:KeyPairGenerator
@@ -94,10 +91,9 @@ public class TestKeyPair {
   """,
     "Remove list":
     """
-import java.util.List;
-
+import java.io.*;
+import java.util.*;
 public class TestList {
-
     void generate(List<String> list) {
         {
             /// type:Iterator call:remove
