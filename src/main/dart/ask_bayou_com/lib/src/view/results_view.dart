@@ -138,7 +138,7 @@ class ResultsView
     if(!_isShown) // should only be visible to be clicked when isShown is true, but let's be paranoid.
       return;
 
-    if(_resultIndexToFeedback.containsKey(_resultIndex)) // already voted on this result, ignore user
+    if(_resultIndexToFeedback[_resultIndex] == liked) // already voted the same on this result, ignore user
       return;
 
     _resultIndexToFeedback[_resultIndex] = liked;
