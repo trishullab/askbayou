@@ -18,16 +18,20 @@ editorLeft.setTheme("ace/theme/github");
 editorLeft.getSession().setMode("ace/mode/java");
 editorLeft.setOption("showPrintMargin", false);
 editorLeft.setOption("enableBasicAutocompletion", true);
+
+var curr_calls = apicalls;
+var curr_types = types;
+
 var evidenceCompleter = {
     getCompletions: function(editor, session, pos, prefix, callback) {
-        callback(null, apicalls.map(function(word) {
+        callback(null, curr_calls.map(function(word) {
             return {
                 name: word,
                 value: "call:" + word,
                 meta: "API call",
                 score: -apicalls.indexOf(word)
             };
-        }).concat(types.map(function(word) {
+        }).concat(curr_types.map(function(word) {
             return {
                 name: word,
                 value: "type:" + word,
@@ -85,6 +89,7 @@ function setEditorRightContent(content)
 function registerLeftEditorChangeListener()
 {
     editorLeft.on("change", detectTripleSlash);
+    editorLeft.on("change", filterSuggestions);
 }
 
 function detectTripleSlash(e)
@@ -99,6 +104,62 @@ function detectTripleSlash(e)
     }
     else
         editorLeft.setOption("enableLiveAutocompletion", false);
+}
+
+function filterSuggestions(e)
+{
+    // check if line has ///
+    var currLine = editorLeft.getSelectionRange().start.row;
+    var lineContent = editorLeft.session.getLine(currLine);
+    if (!lineContent.includes("///"))
+        return;
+
+    // initialize current calls and types
+    curr_calls = apicalls;
+    curr_types = types;
+
+    // compute related lists from entered evidences
+    var editorContent= getEditorLeftContent();
+    var evidenceLine = editorContent.substring(editorContent.indexOf("///")+3);
+    evidenceLine = evidenceLine.substring(0, evidenceLine.indexOf("\n"));
+    var evidences = evidenceLine.split(" ");
+    var related_lists = [];
+    for (var i = 0; i < evidences.length; i++) {
+        var evidence = evidences[i].trim();
+        if (evidence === "")
+            continue;
+        var evidenceType = evidence.substring(0, 5);
+        if (evidenceType !== "call:" && evidenceType !== "type:")
+            continue;
+        evidence = evidence.substring(5);
+        if (apicalls.indexOf(evidence) >= 0 || types.indexOf(evidence) >= 0)
+            if ((evidenceType + evidence) in related_vocab)
+                related_lists.push(related_vocab[evidenceType + evidence]);
+    }
+
+    // do an intersection of all related lists
+    if (related_lists.length === 0)
+        return;
+    var related = related_lists[0];
+    for (var j = 1; j < related_lists.length; j++) {
+        var temp = [];
+        for (var k = 0; k < related.length; k++) {
+            if (related_lists[j].indexOf(related[k]) >= 0)
+                temp.push(related[k]);
+        }
+        related = temp;
+    }
+
+    // update current calls and types suggestions lists
+    curr_calls = [];
+    curr_types = [];
+    for (var l = 0; l < related.length; l++) {
+        var evType = related[l].substring(0, 5);
+        if (evType === "call:")
+            curr_calls.push(related[l].substring(5));
+        else if (evType === "type:")
+            curr_types.push(related[l].substring(5));
+    }
 }
 
 function checkEvidenceInVocab(editorContent)
