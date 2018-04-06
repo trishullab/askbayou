@@ -40,7 +40,7 @@ import java.util.*;
 public class TestIO {
     void read(File file) {
         {
-            /// call:readLine
+            /// call:readLine type:FileReader type:BufferedReader
         }
     }
 }
@@ -52,7 +52,7 @@ import java.util.*;
 public class TestIO {
     void write(File file, String toWrite) {
         {
-            /// call:write type:FileWriter
+            /// call:write type:FileWriter type:BufferedWriter
         }
     }
 }
@@ -94,9 +94,9 @@ public class TestKeyPair {
 import java.io.*;
 import java.util.*;
 public class TestList {
-    void generate(List<String> list) {
+    void remove(List<String> list) {
         {
-            /// type:Iterator call:remove
+            /// type:Iterator call:next call:remove
         }
     }
 }
