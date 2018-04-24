@@ -213,6 +213,11 @@ class ResultsView
   // todo: doc
   void _renderFeedbackButtons()
   {
+    // Disable like-dislike buttons for release. Remove these two lines to display them.
+    _likeResultButton.style.display = "none";
+    _dislikeResultButton.style.display = "none";
+    return;
+
     if(_vm.isEmpty)
     {
       _likeResultButton.style.display = "none";
