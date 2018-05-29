@@ -38,7 +38,6 @@ Copyright 2017 Rice University
     <!--<link rel="stylesheet" href="intro-js-min/introjs-modern.css">-->
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"> <!-- for UI icons -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="main.dart" type="application/dart"></script>
     <script defer src="packages/browser/dart.js"></script>
     <script defer src="ace-src-min/ace.js" type="text/javascript" charset="utf-8"></script> <!-- for ACE editor -->
@@ -49,7 +48,7 @@ Copyright 2017 Rice University
 
 </head>
 
-<body>
+<body onload="startIntro()">
 
 <div id="header">
     <img src="img/bayou-logo-v2.png" align="left" width="255" height="85" id="logo">
@@ -137,7 +136,18 @@ Copyright 2017 Rice University
     ga('create', 'UA-102593520-1', 'auto');
     ga('send', 'pageview');
 
-    introJs().start();
+    function loadJs() {
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.src = 'main.dart.js';
+        script.type = 'text/javascript';
+        head.appendChild(script);
+    }
+
+    function startIntro() {
+        loadJs();
+        introJs().start();
+    }
 
 </script>
 </body>
